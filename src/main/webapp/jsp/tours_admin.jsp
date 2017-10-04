@@ -132,7 +132,7 @@
                                             <input type="hidden" name="command" value="setdiscount" />
                                             <input type="hidden" name="id" value="${pass.id}" />
                                             <input type="hidden" name="anchor" value="${tour.id}" />
-                                            <input type="number" name="discount" min="0" max="50" step="1">
+                                            <input type="number" name="discount" min="0" max="50" step="1" required>
                                             <input type="submit"  value="<fmt:message key="admin.setdiscount"/>" style="float: right" />
 
                                         </form><br>

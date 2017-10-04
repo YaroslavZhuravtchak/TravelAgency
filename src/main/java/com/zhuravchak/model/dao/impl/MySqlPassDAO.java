@@ -7,6 +7,7 @@ import com.zhuravchak.domain.Tour;
 import org.apache.log4j.Logger;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,6 +45,7 @@ public class MySqlPassDAO extends PassDAO {
         } catch (Exception e) {
             throw new DAOException(e);
         }
+        Collections.sort(list);
         return list;
     }
 }

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * The Class Pass.
  */
-public class Pass extends Entity{
+public class Pass extends Entity implements Comparable<Pass>{
 
     /** The order id. */
     private long id;
@@ -210,5 +210,13 @@ public class Pass extends Entity{
                 ", hot=" + hot +
                 ", discountForRegular=" + discountForRegular +
                 "}\n";
+    }
+
+    /* (non-Javadoc)
+       * @see java.lang.Comparable
+       */
+    @Override
+    public int compareTo(Pass o) {
+        return this.getLeavingDate().compareTo(o.getLeavingDate());
     }
 }

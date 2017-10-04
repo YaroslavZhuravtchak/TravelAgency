@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * The Class Tour.
  */
-public  class Tour extends Entity {
+public  class Tour extends Entity implements Comparable<Tour>{
 
     /** The id. */
     protected long id;
@@ -332,5 +332,13 @@ public  class Tour extends Entity {
                 ", passes=" + passes +
                 ", cities=" + cities +
                 '}';
+    }
+
+    /* (non-Javadoc)
+           * @see java.lang.Comparable
+           */
+    @Override
+    public int compareTo(Tour o) {
+        return this.getPasses().get(0).compareTo(o.getPasses().get(0));
     }
 }
