@@ -1,0 +1,51 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Yaroslav
+  Date: 30-Sep-17
+  Time: 7:05 PM
+  To change this template use File | Settings | File Templates.
+--%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="page" value="/jsp/main.jsp" scope="session"/>
+<fmt:setBundle basename="resources.text" var="rb" />
+<fmt:setLocale value="${lang}" />
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Main</title>
+    <link rel="stylesheet" type="text/css" href="../css/travel.css">
+  </head> 
+
+  <body>
+
+  <c:if test="${  empty user  }">
+      <jsp:forward page="/jsp/login.jsp"/>
+  </c:if>
+
+  <%@ include file="/jsp/header.jsp"%>
+  <%@ include file="/jsp/nav.jsp"%>
+
+
+	<div id="tableContainer">
+	<div id="tableRow">
+
+    <section id="main">
+      <img src="../images/travel.png" width="1245px">
+    </section>
+
+
+	</div> <!-- tableRow -->
+	</div> <!-- tableContainer -->
+
+  <%@ include file="/jsp/footer.jsp"%>
+
+    <script type="text/javascript" src="script/script.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,191 @@
+body {
+  background-color: #b5a789;
+  font-family:     "Comic Sans MS", cursive, Georgia, "Times New Roman", Times, serif;
+  font-size:        small;
+   margin:           0px;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+ul li{
+  list-style-type: none;
+}
+
+header.top {
+  background-color: #675c47;
+  margin: 10px 10px 0px 10px;
+  height:           200px;
+  align: center;
+  line-height: 0.2;
+}
+
+header.top #headerSlogan {
+  font-size: 50px;
+  margin-right: 20px;
+  margin-top: 5px;
+    float: right;
+  align-content: center;
+}
+
+#slogan {
+  padding-bottom: 20px;
+}
+
+.container{
+  position: absolute;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+/*NAVIGATION*/
+.page-navigation{
+  background-color: #675c47;
+  border-color: #101010;
+  min-height: 52px;
+    margin: 10px 10px 0px 10px;
+
+}
+.page-navigation li{
+  color: darkblue;
+  float: left;
+  width: 80px;
+}
+.page-navigation a {
+  display: block;
+  color: #9d9d9d;
+  line-height: 4em;
+  font-weight: bold;
+  text-align: center;
+}
+.page-navigation li a:hover {
+  color: yellowgreen;
+  background-color: #b5a789;
+}
+
+/*LOGIN FORM*/
+.login{
+    padding: 10px;
+    padding-top: 14px;
+    margin-right: 0px;
+    float: right;
+}
+.login input[type="text"],
+.login input[type="password"] {
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    outline: none;
+}
+.login input[type="submit"]:hover, button:hover{
+  color: darkgrey;
+  background-color: green;
+}
+
+.login input[type="submit"]{
+    padding: 5px 5px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+div#tableContainer {
+	display: table;
+	border-spacing: 10px;
+    row-span: 10;
+}
+
+div#tableRow {
+	display: table-row;
+    border-spacing: 10px 0px ;
+
+}
+
+section#drinks {
+    display: table-cell;
+    background-color: #efe5d0;
+   width: 30%;
+    padding: 15px;
+    vertical-align: top;
+}
+
+section#main, section#blog, section.tour_img, section.tour_info, section.tour_data {
+  display: table-cell;
+    background:       #efe5d0 url(/images/background.gif) top left;
+  font-size:        120%;
+  padding:          15px;
+  vertical-align: top;
+
+}
+section.tour_img{
+    width: 300px;
+}
+
+section.tour_data{
+    width: 400px;
+}
+
+footer {
+  background-color: #675c47;
+  color:            #efe5d0;
+  text-align:       center;
+  padding:          15px;
+  margin: 0px 10px 10px 10px;
+  font-size:        90%;
+}
+
+h1 {
+  font-size:        120%;
+  color:            #954b4b;
+}
+
+h2 { font-size: 110%; }
+
+.slogan { color: #954b4b; }
+
+.beanheading {
+  text-align:       center;
+  line-height:      1.8em;
+}
+
+a:link {
+  color:            #b76666;
+  text-decoration:  none;
+   border-bottom:    none;
+   padding: 0px;
+}
+a:visited {
+  color:            #675c47;
+  text-decoration:  none;
+  border-bottom:    none;
+  padding: 0px;
+}
+
+nav ul li.selected {
+	background-color: #222;
+}
+main{
+  min-height: 350px;
+  padding: 10px;
+}
+
+ main #tableContainer #logform{
+    height: 350px;
+    min-width: 700px;
+}
+.field {
+    clear:both;
+    text-align:right;
+    line-height:25px;
+}
+label {
+    float:left;
+    padding-right:10px;
+}
+.registration {
+    float:left;
+    padding-top: 10px;
+}
+
+
