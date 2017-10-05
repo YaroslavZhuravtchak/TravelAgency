@@ -74,7 +74,7 @@ public class UserService {
      * Check user's password.
      * @param  user the user
      * @param  enterPass the user's entered password
-     * @return boolean
+     * @return true if entered password match password from database
      */
     public boolean checkPassword(User user,  String enterPass) {
         String hashedPassword = Hashing.sha256(Hashing.saltPassword(enterPass, Hashing.hexStringToByte(user.getSalt())));
@@ -84,7 +84,7 @@ public class UserService {
     /**
      * Check user's login.
      * @param  enterLogin the user's entered login
-     * @return boolean
+     * @return true if user with entered login exist
      * @throws ServiceException the Service exception
      */
     public boolean checkLogin(String enterLogin) throws ServiceException {
@@ -108,7 +108,7 @@ public class UserService {
      * Check whether user is regular.
      * @param  user the user
      * @param  quantityBought the quantity of pass which user try to buy
-     * @return boolean
+     * @return true if user is regular
      * @throws ServiceException the Service exception
      */
     public boolean isRegular(User user, int quantityBought) throws ServiceException {
