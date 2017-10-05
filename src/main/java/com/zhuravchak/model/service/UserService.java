@@ -107,7 +107,7 @@ public class UserService {
     /**
      * Check whether user is regular.
      * @param  user the user
-     * @param  quantityBought the quantity of pass which user try yo buy
+     * @param  quantityBought the quantity of pass which user try to buy
      * @return boolean
      * @throws ServiceException the Service exception
      */
