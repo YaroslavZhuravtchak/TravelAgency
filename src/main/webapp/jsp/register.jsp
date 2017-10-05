@@ -73,22 +73,26 @@
 
                             <div class="field">
                                 <label for="login"><fmt:message key="login.login"  /></label>
-                                <input type="text" name="login" id="login" required pattern="([A-Za-zА-Яа-я0-9_-]){4,30}" title="<fmt:message key="register.login.roles" />">
+                                <input type="text" name="login" id="login" required pattern="([A-Za-zА-Яа-я0-9_-]){4,30}"
+                                       title="<fmt:message key="register.login.roles" />">
                             </div>
 
                             <div class="field">
                                 <label for="password" ><fmt:message key="login.password"  /></label>
-                                <input type="password" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="<fmt:message key="register.password.rules" />" required>
+                                <input type="password" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                       title="<fmt:message key="register.password.rules" />" required>
                             </div>
 
                             <div class="field">
                                 <label for="firstname" ><fmt:message key="register.firstname" /></label>
-                                <input type="text"  name="firstname" id="firstname" pattern="([A-ZА-Яa-zа-я]){2,30}" required title="<fmt:message key="register.firstname.rules" />">
+                                <input type="text"  name="firstname" id="firstname" pattern="([A-ZА-Яa-zа-я]){2,30}" required
+                                       title="<fmt:message key="register.firstname.rules" />">
                             </div>
 
                             <div class="field">
                                 <label for="secondname" ><fmt:message key="register.lastname" /></label>
-                                <input type="text" name="secondname" id="secondname" pattern="([A-ZА-Яa-zа-я]){2,30}" required title="<fmt:message key="register.lastname.rules" />">
+                                <input type="text" name="secondname" id="secondname" pattern="([A-ZА-Яa-zа-я]){2,30}" required
+                                       title="<fmt:message key="register.lastname.rules" />">
                             </div>
 
                             <div class="field">
@@ -98,7 +102,8 @@
 
                             <div class="field">
                                 <label for="phone" ><fmt:message key="register.phone" /></label>
-                                <input type="tel" name="phone" id="phone" value="+380" pattern="[+][3][8][0][0-9]{9}"  title="<fmt:message key="register.phone.rules" />" required/>
+                                <input type="tel" name="phone" id="phone" value="+380" pattern="[+][3][8][0][0-9]{9}"
+                                       title="<fmt:message key="register.phone.rules" />" required/>
                             </div>
                     <c:choose>
                         <c:when test="${ not empty errorRegisterPassMessage }">
