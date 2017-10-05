@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.util.List;
 
 /**
- * The Class TourService.
+ * The Class UserService.
  */
 public class UserService {
 
