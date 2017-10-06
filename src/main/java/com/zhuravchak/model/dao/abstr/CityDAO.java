@@ -1,5 +1,7 @@
 package com.zhuravchak.model.dao.abstr;
 
+import com.zhuravchak.domain.Country;
+import com.zhuravchak.domain.Tour;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.City;
 import org.apache.log4j.Logger;
@@ -111,4 +113,21 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
         }
         return cities;
     }
+
+    /**
+     * Find all city for tour.
+     * @param  tour the tour
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<City> findAllForTour(Tour tour) throws DAOException;
+
+    /**
+     * Find all cities after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<City> getAllWithActualPassesForCountry(Country country) throws DAOException;
+
 }

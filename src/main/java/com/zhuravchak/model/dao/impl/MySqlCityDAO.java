@@ -55,8 +55,6 @@ public class MySqlCityDAO extends CityDAO {
         return list;
     }
 
-
-
     /**
      * Find all cities after now.
      *

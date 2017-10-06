@@ -34,7 +34,7 @@ public class OrderCommand implements ActionCommand {
 
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             pass = df.getPassDAO(cn).findEntityById(id);
             tour = df.getTourDAO(cn).findEntityById(pass.getTourId());
         } catch (DAOException e) {

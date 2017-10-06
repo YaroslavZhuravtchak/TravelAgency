@@ -1,5 +1,6 @@
 package com.zhuravchak.model.dao.abstr;
 
+import com.zhuravchak.domain.Tour;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.Pass;
 import org.apache.log4j.Logger;
@@ -112,4 +113,12 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
         }
         return passList;
     }
+
+    /**
+     * Find all passes for tour.
+     * @param  tour the tour
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Pass> findAllForTour(Tour tour) throws DAOException ;
 }

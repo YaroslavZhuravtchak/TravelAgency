@@ -41,7 +41,7 @@ public class LoginCommand implements ActionCommand {
         HttpSession session = null;
             try {
                 cn = ConnectionPool.getConnection();
-                MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
+                DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
                 if (UserService.getInstance().checkUser(login, pass)) {
 
                     User user = df.getUserDAO(cn).findEntityByLogin(login);

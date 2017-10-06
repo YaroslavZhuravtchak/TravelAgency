@@ -51,7 +51,7 @@ public class RegisterCommand implements ActionCommand {
 
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
 
             if (UserService.getInstance().checkLogin(login)) {
                byte[] salt = Hashing.generateSalt();

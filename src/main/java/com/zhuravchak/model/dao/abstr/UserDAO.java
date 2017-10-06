@@ -131,4 +131,12 @@ public abstract class UserDAO extends AbstractJDBCDao<User> {
         }
         return users;
     }
+
+    /**
+     * Find user by id.
+     * @param  login the string
+     * @return the user
+     * @throws DAOException the DAO exception
+     */
+    public abstract User findEntityByLogin(String login) throws DAOException;
 }

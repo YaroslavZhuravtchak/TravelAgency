@@ -54,7 +54,7 @@ public class UserService {
         Connection cn = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory)DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             user = df.getUserDAO(cn).findEntityByLogin(enterLogin);
             System.out.println(user);
         } catch (DAOException e) {
@@ -92,7 +92,7 @@ public class UserService {
         Connection cn = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory)DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             user = df.getUserDAO(cn).findEntityByLogin(enterLogin);
         } catch (DAOException e) {
             throw new ServiceException(e);
@@ -117,7 +117,7 @@ public class UserService {
         Connection cn = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory)DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             orders = df.getOrderDAO(cn).findAllForUser(user);
         } catch (DAOException e) {
             throw new ServiceException(e);

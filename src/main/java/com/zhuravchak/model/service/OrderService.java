@@ -1,5 +1,8 @@
 package com.zhuravchak.model.service;
 
+import com.zhuravchak.model.dao.abstr.OrderDAO;
+import com.zhuravchak.model.dao.abstr.PassDAO;
+import com.zhuravchak.model.dao.abstr.UserDAO;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
@@ -78,10 +81,10 @@ public class OrderService {
         Connection cn = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
-            MySqlPassDAO passDAO = df.getPassDAO(cn);
-            MySqlOrderDAO orderDAO = df.getOrderDAO(cn);
-            MySqlUserDAO  userDAO = df.getUserDAO(cn);
+            DAOFactory df =  DAOFactory.getDAOFactory("MYSQL");
+            PassDAO passDAO = df.getPassDAO(cn);
+            OrderDAO orderDAO = df.getOrderDAO(cn);
+            UserDAO userDAO = df.getUserDAO(cn);
             Pass updatedPass = passDAO.findEntityById(pass.getId());
             if(updatedPass.getQuantityAvailable() < quantity ){
                 return false;

@@ -3,6 +3,7 @@ package com.zhuravchak.model.service;
 import com.zhuravchak.domain.City;
 import com.zhuravchak.domain.Country;
 import com.zhuravchak.model.connection.ConnectionPool;
+import com.zhuravchak.model.dao.abstr.CityDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
 import com.zhuravchak.model.dao.impl.MySqlCityDAO;
@@ -54,8 +55,8 @@ public class CountryService {
         Connection cn = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
-            MySqlCityDAO cityDAO = df.getCityDAO(cn);
+            DAOFactory df =  DAOFactory.getDAOFactory("MYSQL");
+            CityDAO cityDAO = df.getCityDAO(cn);
 
             for (Country country : countries) {
                 country.setCities(cityDAO.getAllWithActualPassesForCountry(country));

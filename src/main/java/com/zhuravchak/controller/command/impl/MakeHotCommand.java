@@ -36,7 +36,7 @@ public class MakeHotCommand implements ActionCommand {
 
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             PassDAO passDAO = df.getPassDAO(cn);
             url = new URL(request.getHeader("referer"));
             String redir = url.toString() + "#" + request.getParameter("anchor");

@@ -9,6 +9,7 @@ import com.zhuravchak.domain.Tour;
 import com.zhuravchak.domain.enums.CityFrom;
 import com.zhuravchak.domain.enums.TourType;
 import com.zhuravchak.model.connection.ConnectionPool;
+import com.zhuravchak.model.dao.abstr.TourDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
 import com.zhuravchak.model.dao.impl.MySqlCityDAO;
@@ -45,8 +46,8 @@ public class SearchCommand  implements ActionCommand {
 
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
-            MySqlTourDAO tourDAO = df.getTourDAO(cn);
+            DAOFactory df =  DAOFactory.getDAOFactory("MYSQL");
+            TourDAO tourDAO = df.getTourDAO(cn);
 
             Long country_id = Long.valueOf(request.getParameter("countryId"));
             String cityFrom = request.getParameter("cityFrom");

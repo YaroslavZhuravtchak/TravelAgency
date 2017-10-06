@@ -8,6 +8,7 @@ import com.zhuravchak.domain.Tour;
 import com.zhuravchak.domain.enums.CityFrom;
 import com.zhuravchak.domain.enums.TourType;
 import com.zhuravchak.model.connection.ConnectionPool;
+import com.zhuravchak.model.dao.abstr.CountryDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
 import com.zhuravchak.model.dao.impl.MySqlCountryDAO;
@@ -33,12 +34,10 @@ public class SearchInfoCommand implements ActionCommand {
         List<Tour> tours = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
-            MySqlCountryDAO countryDAO = df.getCountryDAO(cn);
-
+            DAOFactory df =  DAOFactory.getDAOFactory("MYSQL");
+            CountryDAO countryDAO = df.getCountryDAO(cn);
 
             countries = countryDAO.getAllWithActualPasses();
-
 
         } catch (DAOException e) {
             throw new CommandException(e);

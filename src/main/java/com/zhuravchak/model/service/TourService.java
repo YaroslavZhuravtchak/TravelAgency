@@ -1,5 +1,8 @@
 package com.zhuravchak.model.service;
 
+import com.zhuravchak.model.dao.abstr.CityDAO;
+import com.zhuravchak.model.dao.abstr.CountryDAO;
+import com.zhuravchak.model.dao.abstr.PassDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
 import com.zhuravchak.model.dao.impl.MySqlCityDAO;
@@ -55,10 +58,10 @@ public class TourService {
         for(Tour tour: tours){
             try {
                 cn = ConnectionPool.getConnection();
-                MySqlDaoFactory df = (MySqlDaoFactory)DAOFactory.getDAOFactory("MYSQL");
-                MySqlPassDAO passDAO = df.getPassDAO(cn);
-                MySqlCityDAO cityDAO = df.getCityDAO(cn);
-                MySqlCountryDAO countryDAO = df.getCountryDAO(cn);
+                DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
+                PassDAO passDAO = df.getPassDAO(cn);
+                CityDAO cityDAO = df.getCityDAO(cn);
+                CountryDAO countryDAO = df.getCountryDAO(cn);
                 tour.setPasses(passDAO.findAllForTour(tour));
                 List<City> cities = cityDAO.findAllForTour(tour);
                 tour.setCities(cities);

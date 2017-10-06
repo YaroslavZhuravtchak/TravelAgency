@@ -1,5 +1,7 @@
 package com.zhuravchak.model.dao.abstr;
 
+import com.zhuravchak.domain.Tour;
+import com.zhuravchak.domain.User;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.Order;
 import org.apache.log4j.Logger;
@@ -120,4 +122,20 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
         }
         return orders;
     }
+
+    /**
+     * Find all orders for user.
+     * @param  user the user
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Order> findAllForUser(User user) throws DAOException;
+
+    /**
+     * Find all orders for tour.
+     * @param  tour the tour
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Order> findAllForTour(Tour tour) throws DAOException;
 }

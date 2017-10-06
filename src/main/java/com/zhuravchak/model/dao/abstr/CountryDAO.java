@@ -109,4 +109,12 @@ public abstract class CountryDAO extends AbstractJDBCDao<Country> {
         }
         return countries;
     }
+
+    /**
+     * Find all countries after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Country> getAllWithActualPasses() throws DAOException;
 }

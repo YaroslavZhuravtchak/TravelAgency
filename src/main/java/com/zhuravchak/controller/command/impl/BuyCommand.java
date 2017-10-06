@@ -40,7 +40,7 @@ public class BuyCommand implements ActionCommand {
 
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             long passId = Long.valueOf(request.getParameter("passId"));
 
             Pass passByID = df.getPassDAO(cn).findEntityById(passId);

@@ -2,6 +2,7 @@ package com.zhuravchak.controller.command.impl;
 
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.command.ActionCommand;
+import com.zhuravchak.model.dao.abstr.TourDAO;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
@@ -42,8 +43,8 @@ public class TourCommand implements ActionCommand {
         Connection cn = null;
        try{
            cn = ConnectionPool.getConnection();
-           MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
-           MySqlTourDAO tourDAO = df.getTourDAO(cn);
+           DAOFactory df =  DAOFactory.getDAOFactory("MYSQL");
+           TourDAO tourDAO = df.getTourDAO(cn);
            String type = request.getParameter("type");
 
             if (type.equals("shopping")) {

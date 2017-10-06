@@ -141,4 +141,44 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
         }
         return tours;
     }
+
+    /**
+     * Find all tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllAfterNow() throws DAOException;
+
+    /**
+     * Find all trip tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllTripAfterNow() throws DAOException;
+
+    /**
+     * Find all vacation tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllVacationAfterNow() throws DAOException;
+
+    /**
+     * Find all shopping tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllShoppingAfterNow() throws DAOException;
+
+    /**
+     * Find all tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllAfterNowByCountryId(Long countryId, String cityfrom, String tourType) throws DAOException;
 }

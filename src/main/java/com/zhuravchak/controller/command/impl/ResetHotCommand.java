@@ -2,6 +2,7 @@ package com.zhuravchak.controller.command.impl;
 
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.command.ActionCommand;
+import com.zhuravchak.model.dao.abstr.PassDAO;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
@@ -37,8 +38,8 @@ public class ResetHotCommand implements ActionCommand {
         Connection cn = null;
         try {
             cn = ConnectionPool.getConnection();
-            MySqlDaoFactory df = (MySqlDaoFactory) DAOFactory.getDAOFactory("MYSQL");
-            MySqlPassDAO passDAO = df.getPassDAO(cn);
+            DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
+            PassDAO passDAO = df.getPassDAO(cn);
             url = new URL(request.getHeader("referer"));
             String redir = url.toString()+ "#" + request.getParameter("anchor");
             request.setAttribute("redir", redir);
