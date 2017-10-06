@@ -46,7 +46,7 @@ public class TourCommand implements ActionCommand {
            MySqlTourDAO tourDAO = df.getTourDAO(cn);
            String type = request.getParameter("type");
 
-           if (type.equals("shopping")) {
+            if (type.equals("shopping")) {
                tours = tourDAO.getAllShoppingAfterNow();
            } else if (type.equals("trip")) {
                tours = tourDAO.getAllTripAfterNow();

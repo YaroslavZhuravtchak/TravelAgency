@@ -110,12 +110,12 @@ public class Country extends Entity {
         if (id != country.id) return false;
         if (!name.equals(country.name)) return false;
         if (!nameUA.equals(country.nameUA)) return false;
-        return cities.equals(country.cities);
+        return cities != null ? cities.equals(country.cities) : country.cities == null;
     }
 
     /* (non-Javadoc)
-       * @see java.lang.Object
-       */
+           * @see java.lang.Object
+           */
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));

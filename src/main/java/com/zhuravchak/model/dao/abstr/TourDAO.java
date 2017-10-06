@@ -27,11 +27,15 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
     }
 
     private static final String SQL_SELECT_ENTITY_BY_ID = "select * from tour";
+
     private static final String SQL_UPDATE_ENTITY = "update tour set city_from = ?, tour_type = ?, transport_type = ?, " +
             "name = ?, name_ua = ?, description = ?, description_ua = ?, duration = ?, path_image where id = ? where id = ?";
+
     private static final String SQL_DELETE_ENTITY_BY_ID = "delete from tour where id = ?";
+
     private static final String SQL_CREATE_ENTITY = "insert into tour (city_from, tour_type, transport_type, name, name_ua," +
             " description, description_ua, duration, path_image) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
     /* (non-Javadoc)
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao

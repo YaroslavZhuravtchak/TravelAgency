@@ -5,8 +5,6 @@
   Time: 7:05 PM
   To change this template use File | Settings | File Templates.
 --%>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!--NAV-->
@@ -19,6 +17,10 @@
                 <li ><a href="controller?command=tour&type=shopping" style="color: aquamarine"><fmt:message key="menu.item4" /></a></li>
                 <li ><a href="controller?command=tour&type=trip" style="color: aquamarine"><fmt:message key="menu.item3" /></a></li>
                 <li ><a href="controller?command=tour&type=vacation" style="color: aquamarine"><fmt:message key="menu.item2" /></a></li>
+
+                <li ><a href="controller?command=tour&type=vacation" style="color: aquamarine"><fmt:message key="nav.hot" /></a></li>
+                <li ><a href="controller?command=tour&type=vacation" style="color: aquamarine"><fmt:message key="nav.discount" /></a></li>
+                <li ><a href="controller?command=searchinfo" style="color: aquamarine"><fmt:message key="nav.search" /></a></li>
         </ul>
         <!--LOGIN FORM-->
 

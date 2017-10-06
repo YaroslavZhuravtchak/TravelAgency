@@ -27,6 +27,13 @@ public class MySqlTourDAO extends TourDAO {
     private final String SQL_SELECT_ALL_TRIP_AFTER_NOW = "select distinct * from tour join pass on tour.id = pass.tour_id " +
             "where pass.quantity_available > 0 and pass.leaving_date > ? and tour_type ='TRIP' group by tour.id";
 
+    private static final String SQL_SELECT_ALL_BY_COUNTRY_ID_TOUR_AND_CITIFROME_TYPE = "select tour.id, tour.city_from, " +
+            " tour.tour_type, tour.transport_type, tour.name, tour.name_ua , tour.description, tour.description_ua, " +
+            "tour.duration, tour.path_image from tour join pass on tour.id = pass.tour_id join tour_city " +
+            "on tour_city.tour_id = tour.id join city on city.id = tour_city.city_id join country on country.id = city.country_id " +
+            " where tour.city_from = ? and tour.tour_type = ? and country_id = ? and pass.quantity_available > 0 " +
+            "and pass.leaving_date > ? group by tour.id;";
+
     /**
      * Constructor
      */
@@ -106,5 +113,27 @@ public class MySqlTourDAO extends TourDAO {
         return list;
     }
 
+    /**
+     * Find all tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public List<Tour> getAllAfterNowByCountryId(Long countryId, String cityfrom, String tourType) throws DAOException {
+        List<Tour> list;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_BY_COUNTRY_ID_TOUR_AND_CITIFROME_TYPE)) {
+
+            statement.setString(1,cityfrom);
+            statement.setString(2,tourType);
+            statement.setLong(3, countryId);
+            statement.setDate(4, Date.valueOf(LocalDate.now()));
+
+            ResultSet rs = statement.executeQuery();
+            list = parseResultSet(rs);
+        } catch (Exception e) {
+            throw new DAOException(e);
+        }
+        return list;
+    }
 
 }

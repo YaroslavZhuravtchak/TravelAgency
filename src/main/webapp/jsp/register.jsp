@@ -72,7 +72,7 @@
                     <h1 id="k"><fmt:message key="register.fillform" /></h1>
 
                             <div class="field">
-                                <label for="login"><fmt:message key="login.login"  /></label>
+                                <label for="login"><fmt:message key="login.login" /></label>
                                 <input type="text" name="login" id="login" required pattern="([A-Za-zА-Яа-я0-9_-]){4,30}"
                                        title="<fmt:message key="register.login.roles" />">
                             </div>
