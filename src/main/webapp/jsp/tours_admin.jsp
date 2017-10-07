@@ -136,6 +136,12 @@
                                             <input type="submit"  value="<fmt:message key="admin.setdiscount"/>" style="float: right" />
                                         </form><br>
 
+                                    <form class="login"  action="controller"  >
+                                        <input type="hidden" name="command" value="prepareaddpass" />
+                                        <input type="hidden" name="tourId" value="${tour.id}" />
+                                        <input type="submit"  value="<fmt:message key="admin.addpass"/>" style="float: right" />
+                                    </form><br>
+
                                     <c:choose>
                                         <c:when test="${pass.hot}">
                                             <img src="../images/hot.png" width="50px">

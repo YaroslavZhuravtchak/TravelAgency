@@ -39,9 +39,17 @@ public enum CommandEnum {
     /** To set discount for regular users */
     SETDISCOUNT(new SetDiscountCommand()),
 
+    /** The search. */
     SEARCH (new SearchCommand()),
 
+    /** The searchinfo. */
     SEARCHINFO(new SearchInfoCommand()),
+
+    /** The PrepereAddPass. */
+    PREPAREADDPASS (new PrepereAddPassCommand()),
+
+    /** The AddPass. */
+    ADDPASS (new AddPassCommand()),
 
     /** The forward. */
     FORWARD (new ForwardCommand());
