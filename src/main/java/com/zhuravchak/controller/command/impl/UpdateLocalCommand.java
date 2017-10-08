@@ -28,7 +28,7 @@ public class UpdateLocalCommand implements ActionCommand {
         URL url = null;
         try {
             url = new URL(request.getHeader("referer"));
-            request.setAttribute("redirect", "controller?" + url.getQuery());
+           // request.setAttribute("redirect", "controller?" + url.getQuery());
 
         } catch (MalformedURLException e) {
             LOG.error(e);

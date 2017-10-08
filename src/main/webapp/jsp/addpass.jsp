@@ -36,10 +36,8 @@
 
             <section class="tour_info" >
                 <br>
-                <form name="regForm" method="get" action="controller" id="form">
+                <form name="regForm" method="post" action="controller" id="form">
                     <input type="hidden" name="command" value="addpass" />
-                    <input type="hidden" name="tourId" value="${tourId}" />
-                    <input type="hidden" name="redir" value="${redir}" />
                     <h1 id="k"><fmt:message key="admin.addpass.title" /></h1>
 
                     <div class="field">

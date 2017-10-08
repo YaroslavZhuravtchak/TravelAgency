@@ -1,5 +1,6 @@
 package com.zhuravchak.controller.command.impl;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.util.resource.ConfigurationManager;
@@ -26,12 +27,16 @@ public class AddPassCommand implements ActionCommand{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
 
         String page = ConfigurationManager.getProperty("path.page.redirect");
-        LocalDate date = LocalDate.parse(request.getParameter("date"));
-        request.setAttribute("redir", request.getParameter("redir"));
 
+        request.setAttribute("redir", (String)request.getSession().getAttribute("toursPage"));
+
+        Long tourId = Long.valueOf((String)request.getSession().getAttribute("tourId"));
+
+        LocalDate date = LocalDate.parse(request.getParameter("date"));
         Integer quantity = Integer.valueOf(request.getParameter("quantity"));
         Double price = Double.valueOf(request.getParameter("price"));
-        Long tourId = Long.valueOf(request.getParameter("tourId"));
+
+
 
         Connection cn = null;
 

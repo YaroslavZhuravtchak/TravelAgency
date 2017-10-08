@@ -25,7 +25,10 @@ public class PrepereAddPassCommand implements ActionCommand {
         URL url = null;
         try {
             url = new URL(request.getHeader("referer"));
-            request.setAttribute("redir",  url.toString());
+
+            if( request.getSession().getAttribute("toursPage") == null ) {
+                request.getSession().setAttribute("toursPage", url.toString());
+            }
 
         } catch (MalformedURLException e) {
             LOG.error(e);
@@ -35,8 +38,8 @@ public class PrepereAddPassCommand implements ActionCommand {
         page = ConfigurationManager.getProperty("path.page.addpass");
         LocalDate date = LocalDate.now().plusDays(1);
 
-        request.setAttribute("date", date );
-        request.setAttribute("tourId",request.getParameter("tourId"));
+        request.getSession().setAttribute("date", date );
+        request.getSession().setAttribute("tourId",request.getParameter("tourId"));
 
         return page;
     }
