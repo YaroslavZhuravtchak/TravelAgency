@@ -1,15 +1,15 @@
-package com.zhuravchak.controller.command.impl;
+package com.zhuravchak.controller.command.impl.user;
 
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.model.dao.abstr.TourDAO;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
-import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
-import com.zhuravchak.model.dao.impl.MySqlTourDAO;
 import com.zhuravchak.domain.Tour;
 import com.zhuravchak.model.connection.ConnectionPool;
 import com.zhuravchak.controller.util.resource.ConfigurationManager;
+import com.zhuravchak.model.exception.ServiceException;
+import com.zhuravchak.model.service.TourService;
 import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,9 +32,8 @@ public class TourCommand implements ActionCommand {
 
      String page = null;
      String role = (String)request.getSession().getAttribute("role");
-
-     if(role.equals("ADMIN")){
-         page = ConfigurationManager.getProperty("path.page.tours.admin");
+     if(role == null){
+         page = ConfigurationManager.getProperty("path.page.login");
      }else{
          page = ConfigurationManager.getProperty("path.page.tours");
      }
@@ -48,13 +47,23 @@ public class TourCommand implements ActionCommand {
            String type = request.getParameter("type");
 
             if (type.equals("shopping")) {
-               tours = tourDAO.getAllShoppingAfterNow();
+               tours = tourDAO.getAllShoppingAfterNowWithSeats();
+                TourService.getInstance().fillToursForUser(tours);
            } else if (type.equals("trip")) {
-               tours = tourDAO.getAllTripAfterNow();
+               tours = tourDAO.getAllTripAfterNowWithSeats();
+                TourService.getInstance().fillToursForUser(tours);
            } else if (type.equals("vacation")) {
-               tours = tourDAO.getAllVacationAfterNow();
+               tours = tourDAO.getAllVacationAfterNowWithSeats();
+                TourService.getInstance().fillToursForUser(tours);
+           } else if (type.equals("hot")) {
+                tours = tourDAO.getAllHotAfterNowWithSeats();
+                TourService.getInstance().fillToursWithHotPasses(tours);
+           } else if (type.equals("discount")) {
+                tours = tourDAO.getAllAfterNowWithSeatsAndDiscount();
+                TourService.getInstance().fillToursWithDiscount(tours);
            }
-       } catch (DAOException e) {
+
+       } catch (DAOException|ServiceException e) {
            throw new CommandException(e);
        } finally {
            if(cn != null){

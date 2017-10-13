@@ -138,4 +138,13 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
      * @throws DAOException the DAO exception
      */
     public abstract List<Order> findAllForTour(Tour tour) throws DAOException;
+
+
+    /**
+     * Find last order for user.
+     * @param  user the user
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Order> findLastForUser(User user) throws DAOException ;
 }

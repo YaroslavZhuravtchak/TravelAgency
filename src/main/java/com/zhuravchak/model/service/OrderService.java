@@ -77,9 +77,10 @@ public class OrderService {
      * @return boolean bought or not
      */
     public synchronized boolean buyPass (Pass pass, long userId, int quantity, double price ) throws ServiceException{
-
+       boolean result =false;
         Connection cn = null;
         try {
+
             cn = ConnectionPool.getConnection();
             DAOFactory df =  DAOFactory.getDAOFactory("MYSQL");
             PassDAO passDAO = df.getPassDAO(cn);
@@ -114,8 +115,10 @@ public class OrderService {
                     throw new SQLException("Can't update User");
                 }
             }
+
             cn.commit();
-        } catch (DAOException | SQLException e) {
+            result = true;
+        } catch (Exception e) {
             try {
                 cn.rollback();
             } catch (SQLException e1) {
@@ -132,6 +135,6 @@ public class OrderService {
                 ConnectionPool.closeConnection(cn);
             }
         }
-        return true;
+        return result;
     }
 }

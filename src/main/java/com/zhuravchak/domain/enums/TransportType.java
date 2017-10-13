@@ -8,9 +8,6 @@ public enum TransportType {
     /** The plane. */
     PLANE("Літак"),
     
-    /** The boat. */
-    BOAT("Корабель"),
-    
     /** The train. */
     TRAIN("Поїзд"),
     

@@ -45,7 +45,8 @@ public class LoginCommand implements ActionCommand {
                 if (UserService.getInstance().checkUser(login, pass)) {
 
                     User user = df.getUserDAO(cn).findEntityByLogin(login);
-                    session = request.getSession(true);
+                    session = request.getSession();
+                    System.out.println(session.getAttribute("lang"));
                     if (session.getAttribute("user") == null) {
                         session.setAttribute("user", user.getLogin());
                     }
@@ -58,7 +59,11 @@ public class LoginCommand implements ActionCommand {
                     if (session.getAttribute("isRegular") == null) {
                         session.setAttribute("isRegular", String.valueOf(user.isRegular()));
                     }
-                    page = ConfigurationManager.getProperty("path.page.main");
+                    if(session.getAttribute("role") == "USER" ) {
+                        page = ConfigurationManager.getProperty("path.page.main");
+                    } else if(session.getAttribute("role") == "ADMIN" ){
+                        page = ConfigurationManager.getProperty("path.page.main.admin");
+                    }
 
                     LOG.info("User: " + session.getAttribute("user") +
                             " Role: " + session.getAttribute("role") + " log in");

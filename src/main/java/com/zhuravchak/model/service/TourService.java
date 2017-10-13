@@ -51,7 +51,40 @@ public class TourService {
      * @return void
      * @throws ServiceException the Service exception
      */
-    public  void fillTours(List<Tour> tours) throws ServiceException{
+    public  void fillToursForUser(List<Tour> tours) throws ServiceException{
+
+        Connection cn = null;
+
+        for(Tour tour: tours){
+            try {
+                cn = ConnectionPool.getConnection();
+                DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
+                PassDAO passDAO = df.getPassDAO(cn);
+                CityDAO cityDAO = df.getCityDAO(cn);
+                CountryDAO countryDAO = df.getCountryDAO(cn);
+                tour.setPasses(passDAO.findAllForTourWithSeats(tour));
+                List<City> cities = cityDAO.findAllForTour(tour);
+                tour.setCities(cities);
+                for(City city : cities){
+                    city.setCountry(countryDAO.findEntityById(city.getCountryId()));
+                }
+            } catch (Exception e) {
+                throw new ServiceException(e);
+            }  finally {
+                if(cn != null){
+                    ConnectionPool.closeConnection(cn);
+                }
+            }
+        }
+    }
+
+    /**
+     * Fill tours with passes and cities.
+     * @param  tours the list of tours
+     * @return void
+     * @throws ServiceException the Service exception
+     */
+    public  void fillToursForAdmin(List<Tour> tours) throws ServiceException{
 
         Connection cn = null;
 
@@ -77,4 +110,73 @@ public class TourService {
             }
         }
     }
+
+
+    /**
+     * Fill tours with passes and cities.
+     * @param  tours the list of tours
+     * @return void
+     * @throws ServiceException the Service exception
+     */
+    public  void fillToursWithHotPasses(List<Tour> tours) throws ServiceException{
+
+        Connection cn = null;
+
+        for(Tour tour: tours){
+            try {
+                cn = ConnectionPool.getConnection();
+                DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
+                PassDAO passDAO = df.getPassDAO(cn);
+                CityDAO cityDAO = df.getCityDAO(cn);
+                CountryDAO countryDAO = df.getCountryDAO(cn);
+                tour.setPasses(passDAO.findAllHot(tour));
+                List<City> cities = cityDAO.findAllForTour(tour);
+                tour.setCities(cities);
+                for(City city : cities){
+                    city.setCountry(countryDAO.findEntityById(city.getCountryId()));
+                }
+            } catch (Exception e) {
+                throw new ServiceException(e);
+            }  finally {
+                if(cn != null){
+                    ConnectionPool.closeConnection(cn);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Fill tours with passes and cities.
+     * @param  tours the list of tours
+     * @return void
+     * @throws ServiceException the Service exception
+     */
+    public  void fillToursWithDiscount(List<Tour> tours) throws ServiceException{
+
+        Connection cn = null;
+
+        for(Tour tour: tours){
+            try {
+                cn = ConnectionPool.getConnection();
+                DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
+                PassDAO passDAO = df.getPassDAO(cn);
+                CityDAO cityDAO = df.getCityDAO(cn);
+                CountryDAO countryDAO = df.getCountryDAO(cn);
+                tour.setPasses(passDAO.findAllWithDiscount(tour));
+                List<City> cities = cityDAO.findAllForTour(tour);
+                tour.setCities(cities);
+                for(City city : cities){
+                    city.setCountry(countryDAO.findEntityById(city.getCountryId()));
+                }
+            } catch (Exception e) {
+                throw new ServiceException(e);
+            }  finally {
+                if(cn != null){
+                    ConnectionPool.closeConnection(cn);
+                }
+            }
+        }
+    }
+
 }

@@ -20,7 +20,6 @@ public class LogoutCommand implements ActionCommand {
 
         String page = ConfigurationManager.getProperty("path.page.index");
         HttpSession session = request.getSession(true);
-        String lang = null;
         session.invalidate();
 
         return page;

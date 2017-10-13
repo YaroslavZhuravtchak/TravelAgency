@@ -339,6 +339,10 @@ public  class Tour extends Entity implements Comparable<Tour>{
            */
     @Override
     public int compareTo(Tour o) {
-        return this.getPasses().get(0).compareTo(o.getPasses().get(0));
+        if(this.getPasses().get(0) != null && o.getPasses().get(0) != null) {
+            return this.getPasses().get(0).compareTo(o.getPasses().get(0));
+        } else {
+            return 0;
+        }
     }
 }

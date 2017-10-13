@@ -26,6 +26,9 @@ public class MySqlCityDAO extends CityDAO {
             "join pass on tour.id = pass.tour_id where pass.quantity_available > 0  and pass.leaving_date > ? " +
             "and city.country_id = ? group by city.id";
 
+    private static final String SQL_SELECT_ALL_WITH_TOURS = "select city.id, city.country_id, city.city_name, city.city_name_ua" +
+            " from city join tour_city on city.id = tour_city.city_id join tour on tour_city.tour_id = tour.id group by city.id";
+
     private static final String SQL_SELECT_ALL_BY_ENTiTY = "select city.id, city.country_id, city.city_name, city.city_name_ua " +
             "from city join tour_city on city.id = tour_city.city_id where tour_id = ?";
 
@@ -66,6 +69,23 @@ public class MySqlCityDAO extends CityDAO {
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_WITH_ACTUAL_PASSES)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             statement.setLong(2, country.getId());
+            ResultSet rs = statement.executeQuery();
+            list = parseResultSet(rs);
+        } catch (Exception e) {
+            throw new DAOException(e);
+        }
+        return list;
+    }
+
+    /**
+     * Find all cities after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public List<City> getAllWithTours() throws DAOException {
+        List<City> list;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_WITH_TOURS)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {

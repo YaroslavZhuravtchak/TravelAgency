@@ -16,13 +16,13 @@
 <html>
 <head>
     <title>Search</title>
-    <link rel="stylesheet" type="text/css" href="../css/travel.css">
+    <link rel="stylesheet" type="text/css" href="../../css/travel.css">
 
 </head>
 <body>
 
 <%@ include file="/jsp/header.jsp"%>
-<%@ include file="/jsp/nav.jsp"%>
+<%@ include file="/jsp/user/nav.jsp"%>
 
 <main>
     <div class="tableContainer">
@@ -34,8 +34,8 @@
             </section>
 
             <section class="tour_info" >
-                <br>
-                <form name="regForm" method="get" action="controller" id="form">
+                <br><br>
+                <form name="regForm" method="get" action="user" id="form">
                     <input type="hidden" name="command" value="search" />
                     <h1 id="k"><fmt:message key="search.title" /></h1>
 
@@ -89,12 +89,12 @@
                     </div>
 
                     <br>
-                    <br>
+                    <br><br>
 
                     <input type="submit" value="<fmt:message key="search.find" />" id="button" >
                 </form>
                 <br>
-                <img src="../images/line.png" width="330px">
+                <img src="../../images/line.png" width="330px">
 
             </section>
 

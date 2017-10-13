@@ -3,6 +3,8 @@ package com.zhuravchak.controller.command.commandlist;
 import com.zhuravchak.controller.command.impl.ForwardCommand;
 import com.zhuravchak.controller.command.impl.*;
 import com.zhuravchak.controller.command.ActionCommand;
+import com.zhuravchak.controller.command.impl.admin.*;
+import com.zhuravchak.controller.command.impl.user.*;
 
 public enum CommandEnum {
 
@@ -39,6 +41,9 @@ public enum CommandEnum {
     /** To set discount for regular users */
     SETDISCOUNT(new SetDiscountCommand()),
 
+    /** To set QUANTITY of seats for pass */
+    SETQUANTITY(new SetQuantityCommand()),
+
     /** The search. */
     SEARCH (new SearchCommand()),
 
@@ -50,6 +55,13 @@ public enum CommandEnum {
 
     /** The AddPass. */
     ADDPASS (new AddPassCommand()),
+
+    /** The Tour Admin. */
+    TOURADMIN (new TourAdminCommand()),
+
+    PREPAREADMINSEARCH (new PrepareAdminSearchCommand()),
+
+    SEARCHADMIN (new AdminSearchCommand()),
 
     /** The forward. */
     FORWARD (new ForwardCommand());

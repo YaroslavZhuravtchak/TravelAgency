@@ -22,51 +22,36 @@
 </head>
 <body>
 
-<c:if test="${ not empty user  }">
-    <jsp:forward page="/jsp/main.jsp"/>
-</c:if>
 
 <%@ include file="/jsp/header.jsp"%>
 
 <nav class="page-navigation">
     <div class="container">
-        <!--LOGIN FORM-->
+
         <div id=logreg>
 
-            <form class="login"  action="controller"  >
-                <input type="hidden" name="command" value="updatelocal" />
-                <input type="hidden" name="local" value="en_UK" />
-                <input type="submit"  value="EN"/>
-            </form>
-            <form class="login"  action="controller"  >
-                <input type="hidden" name="command" value="updatelocal" />
-                <input type="hidden" name="local" value="uk_UA" />
-                <input type="submit"  value="UA"/>
-            </form>
-            <form action="controller" class="login">
+            <form action="register" class="login">
                 <input type="hidden" name="command" value="forward" />
                 <input type="hidden" name="page" value="register" />
                 <input type="submit" value="<fmt:message key="label.form.registration"/> "  >
             </form>
         </div>
-        <!--LOGIN FORM-->
+
     </div>
 
 </nav>
-
+<!--LOGIN FORM-->
 <main>
     <div class="tableContainer">
         <div class="tableRow">
             <div id="logform">
                 <section class="tour_img">
-
                 </section>
                 <section class="tour_img">
-
                 </section>
-                <section class="tour_info" style="">
+                <section class="tour_info" >
                     <br><br>
-                    <form name="loginForm"method="post" action="/controller">
+                    <form name="loginForm"method="post" action="main">
                         <input type="hidden" name="command" value="login" />
                         <h1 id="k"><fmt:message key="login.enter"  /></h1>
                         <fmt:message key="login.login"  /><br/>
@@ -92,7 +77,7 @@
         </div>
     </div>
 </main>
-
+<!--LOGIN FORM-->
 <%@ include file="/jsp/footer.jsp"%>
 </body>
 </html>

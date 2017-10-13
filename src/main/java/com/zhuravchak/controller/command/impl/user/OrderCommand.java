@@ -1,10 +1,9 @@
-package com.zhuravchak.controller.command.impl;
+package com.zhuravchak.controller.command.impl.user;
 
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
-import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
 import com.zhuravchak.domain.Pass;
 import com.zhuravchak.domain.Tour;
 import com.zhuravchak.model.connection.ConnectionPool;

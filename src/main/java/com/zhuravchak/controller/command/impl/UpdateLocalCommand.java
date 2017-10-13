@@ -28,8 +28,8 @@ public class UpdateLocalCommand implements ActionCommand {
         URL url = null;
         try {
             url = new URL(request.getHeader("referer"));
-           // request.setAttribute("redirect", "controller?" + url.getQuery());
 
+            System.out.println(url);
         } catch (MalformedURLException e) {
             LOG.error(e);
             throw new CommandException(e);
@@ -43,12 +43,15 @@ public class UpdateLocalCommand implements ActionCommand {
         String redir = null;
 
         if ((query != null && query.equals("command=logout&page=logout")) || ( role == null && query==null)) {
-             redir = "controller";
-        } else if (query == null && role != null ) {
-            redir = "controller?command=forward&page=main";
-        } else {
-            redir = url.toString();
+            redir = "/login";
         }
+        else if (query == null && role.equals("USER")) {
+           redir = "user?command=forward&page=main";
+        }else if (query == null && role.equals("ADMIN")) {
+                redir = "admin?command=forward&page=mainadmin";
+       } else {
+            redir = url.toString();
+       }
 
         request.setAttribute("redir", redir);
 

@@ -47,6 +47,9 @@ public class ForwardCommand implements ActionCommand {
             case "redirect":
                 page = ConfigurationManager.getProperty("path.page.redirect");
                 break;
+            case "mainadmin":
+                page = ConfigurationManager.getProperty("path.page.main.admin");
+                break;
             default:
                 page = ConfigurationManager.getProperty("path.page.login");
                 break;

@@ -135,8 +135,7 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
 
                 tours.add(tour);
             }
-            TourService.getInstance().fillTours(tours);
-        } catch (SQLException|ServiceException e) {
+        } catch (SQLException e) {
             throw new DAOException("SQL exception (request or table failed): " + e,e);
         }
         return tours;
@@ -148,7 +147,7 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
      * @return the list
      * @throws DAOException the DAO exception
      */
-    public abstract List<Tour> getAllAfterNow() throws DAOException;
+    public abstract List<Tour> getAllAfterNowWithSeats() throws DAOException;
 
     /**
      * Find all trip tours after now.
@@ -156,7 +155,7 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
      * @return the list
      * @throws DAOException the DAO exception
      */
-    public abstract List<Tour> getAllTripAfterNow() throws DAOException;
+    public abstract List<Tour> getAllTripAfterNowWithSeats() throws DAOException;
 
     /**
      * Find all vacation tours after now.
@@ -164,7 +163,7 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
      * @return the list
      * @throws DAOException the DAO exception
      */
-    public abstract List<Tour> getAllVacationAfterNow() throws DAOException;
+    public abstract List<Tour> getAllVacationAfterNowWithSeats() throws DAOException;
 
     /**
      * Find all shopping tours after now.
@@ -172,7 +171,7 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
      * @return the list
      * @throws DAOException the DAO exception
      */
-    public abstract List<Tour> getAllShoppingAfterNow() throws DAOException;
+    public abstract List<Tour> getAllShoppingAfterNowWithSeats() throws DAOException;
 
     /**
      * Find all tours after now.
@@ -181,4 +180,61 @@ public abstract class TourDAO extends AbstractJDBCDao<Tour> {
      * @throws DAOException the DAO exception
      */
     public abstract List<Tour> getAllAfterNowByCountryId(Long countryId, String cityfrom, String tourType) throws DAOException;
+
+    /**
+     * Find all tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllAfterNow() throws DAOException ;
+
+    /**
+     * Find all trip tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllTrip() throws DAOException ;
+
+    /**
+     * Find all vacation tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllVacation() throws DAOException ;
+
+    /**
+     * Find all shopping tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public  abstract List<Tour> getAllShopping() throws DAOException ;
+
+    /**
+     * Find all tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllAfterNowWithSeatsAndDiscount() throws DAOException ;
+
+    /**
+     * Find all tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllHotAfterNowWithSeats() throws DAOException ;
+
+
+    /**
+     * Find all trip tours after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Tour> getAllByCityId(Long cityId) throws DAOException ;
 }

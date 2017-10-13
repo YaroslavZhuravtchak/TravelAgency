@@ -121,4 +121,22 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
      * @throws DAOException the DAO exception
      */
     public abstract List<Pass> findAllForTour(Tour tour) throws DAOException ;
+
+    public abstract List<Pass> findAllForTourWithSeats(Tour tour) throws DAOException ;
+
+    /**
+     * Find all passes for tour.
+     * @param  tour the tour
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Pass> findAllWithDiscount(Tour tour) throws DAOException ;
+
+    /**
+     * Find all passes for tour.
+     * @param  tour the tour
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<Pass> findAllHot(Tour tour) throws DAOException ;
 }

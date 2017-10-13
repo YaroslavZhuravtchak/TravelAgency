@@ -1,4 +1,4 @@
-package com.zhuravchak.controller.command.impl;
+package com.zhuravchak.controller.command.impl.admin;
 
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
@@ -25,11 +25,12 @@ public class PrepereAddPassCommand implements ActionCommand {
         URL url = null;
         try {
             url = new URL(request.getHeader("referer"));
+            String from = (String)request.getSession().getAttribute("toursPage");
 
-            if( request.getSession().getAttribute("toursPage") == null ) {
+            if(from==null||from.contains("command=prepareaddpass") ) {
                 request.getSession().setAttribute("toursPage", url.toString());
-            }
-
+           }
+            System.out.println(url.toString());
         } catch (MalformedURLException e) {
             LOG.error(e);
             throw new CommandException(e);

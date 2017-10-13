@@ -68,7 +68,7 @@ public class TravelController extends HttpServlet {
                 dispatcher.forward(request, response);
 
         } else {
-            page = ConfigurationManager.getProperty("path.page.index");
+            page = ConfigurationManager.getProperty("path.page.error");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
             dispatcher.forward(request, response);
         }

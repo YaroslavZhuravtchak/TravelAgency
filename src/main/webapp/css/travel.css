@@ -112,7 +112,7 @@ section#drinks {
 
 section#main, section#blog, section.tour_img, section.tour_info, section.tour_data {
   display: table-cell;
-    background:       #efe5d0 url(/images/background.gif) top left;
+  background:       #efe5d0 url(/images/small.jpg) top left;
   font-size:        120%;
   padding:          15px;
   vertical-align: top;
@@ -123,7 +123,7 @@ section.tour_img{
 }
 
 section.tour_data{
-    width: 400px;
+    width: 350px;
 }
 
 footer {
@@ -188,4 +188,7 @@ label {
     padding-top: 10px;
 }
 
-
+.info {
+    color: #aa1a17;
+    padding-left: 15px;
+}

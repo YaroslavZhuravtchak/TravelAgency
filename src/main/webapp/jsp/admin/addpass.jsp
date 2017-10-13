@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,13 +16,13 @@
 <html>
 <head>
     <title>Add pass</title>
-    <link rel="stylesheet" type="text/css" href="../css/travel.css">
+    <link rel="stylesheet" type="text/css" href="../../css/travel.css">
 
 </head>
 <body>
 
 <%@ include file="/jsp/header.jsp"%>
-<%@ include file="/jsp/nav.jsp"%>
+<%@ include file="/jsp/admin/nav_admin.jsp"%>
 
 <main>
     <div class="tableContainer">
@@ -35,14 +34,14 @@
             </section>
 
             <section class="tour_info" >
-                <br>
-                <form name="regForm" method="post" action="controller" id="form">
+                <br><br>
+                <form name="regForm" method="post" action="admin" id="form">
                     <input type="hidden" name="command" value="addpass" />
                     <h1 id="k"><fmt:message key="admin.addpass.title" /></h1>
 
                     <div class="field">
                         <label for="date"><fmt:message key="admin.addpass.date" /></label>
-                        <input type="date" name="date" id="date" min="${date}" required>
+                        <input type="date" name="date" id="date" min="${date}" required style="width: 173px; height: 22px">
                     </div>
 
                     <div class="field" >
@@ -60,8 +59,8 @@
 
                     <input type="submit" value="<fmt:message key="admin.addpass.submit" />" id="button" >
                 </form>
-                <br>
-                <img src="../images/line.png" width="330px">
+                <br><br>
+                <img src="../../images/line.png" width="330px">
 
             </section>
 
@@ -73,7 +72,7 @@
 
         </div>
     </div>
-    </div>
+
 </main>
 
 <%@ include file="/jsp/footer.jsp"%>

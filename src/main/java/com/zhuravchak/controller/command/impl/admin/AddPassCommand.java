@@ -1,6 +1,5 @@
-package com.zhuravchak.controller.command.impl;
+package com.zhuravchak.controller.command.impl.admin;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.util.resource.ConfigurationManager;
@@ -37,7 +36,7 @@ public class AddPassCommand implements ActionCommand{
         Double price = Double.valueOf(request.getParameter("price"));
 
 
-
+        request.getSession().setAttribute("toursPage", null);
         Connection cn = null;
 
         try{

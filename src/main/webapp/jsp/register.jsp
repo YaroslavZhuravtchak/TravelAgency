@@ -21,8 +21,11 @@
 </head>
 <body>
 
-<c:if test="${ not empty user  }">
-    <jsp:forward page="/jsp/main.jsp"/>
+<c:if test="${not empty user and role eq 'ADMIN'}">
+    <jsp:forward page="/jsp/admin/main_admin.jsp"/>
+</c:if>
+<c:if test="${not empty user and role eq 'USER'}">
+    <jsp:forward page="/jsp/user/main.jsp"/>
 </c:if>
 
 <%@ include file="/jsp/header.jsp"%>
@@ -30,21 +33,11 @@
 
     <div class="container">
 
-        <!--LOGIN FORM-->
+
 
         <div id=logreg>
 
-            <form class="login" name="updatelocal" action="controller"  >
-                <input type="hidden" name="command" value="UpdateLocal" />
-                <input type="hidden" name="local" value="en_UK" />
-                <input type="submit"  value="EN"/>
-            </form>
-            <form class="login" name="updatelocal" action="controller" >
-                <input type="hidden" name="command" value="UpdateLocal" />
-                <input type="hidden" name="local" value="uk_UA" />
-                <input type="submit"  value="UA"/>
-            </form>
-            <form action="controller" class="login">
+            <form action="login" class="login">
                 <input type="hidden" name="command" value="forward" />
                 <input type="hidden" name="page" value="login" />
                 <input type="submit" value="<fmt:message key="label.form.login"/>">
@@ -52,7 +45,7 @@
 
 
         </div>
-        <!--LOGIN FORM-->
+
     </div>
 </nav>
 
@@ -67,7 +60,7 @@
 
             <section class="tour_info" >
                 <br>
-                <form name="regForm" method="POST" action="/controller">
+                <form name="regForm" method="POST" action="login">
                     <input type="hidden" name="command" value="register" />
                     <h1 id="k"><fmt:message key="register.fillform" /></h1>
 
@@ -107,8 +100,9 @@
                             </div>
                     <c:choose>
                         <c:when test="${ not empty errorRegisterPassMessage }">
-                            <span style="color: #ff0000;">${errorRegisterPassMessage}</span>
                             <br/>
+                            <span style="color: #ff0000;">${errorRegisterPassMessage}</span>
+
                             <br/>
                         </c:when>
                         <c:otherwise>

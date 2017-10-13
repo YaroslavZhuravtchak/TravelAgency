@@ -130,4 +130,11 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
      */
     public abstract List<City> getAllWithActualPassesForCountry(Country country) throws DAOException;
 
+    /**
+     * Find all cities after now.
+     *
+     * @return the list
+     * @throws DAOException the DAO exception
+     */
+    public abstract List<City> getAllWithTours() throws DAOException ;
 }

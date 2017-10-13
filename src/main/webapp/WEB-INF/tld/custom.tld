@@ -23,4 +23,30 @@
         <body-content>empty</body-content>
     </tag>
 
+    <tag>
+        <description>sort tours</description>
+        <name>sortTours</name>
+        <tag-class>com.zhuravchak.controller.util.mytag.ToursSorter</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>list</name>
+            <required> true </required>
+            <rtexprvalue> true </rtexprvalue>
+            <type>java.util.ArrayList</type>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>sort cities</description>
+        <name>sortCities</name>
+        <tag-class>com.zhuravchak.controller.util.mytag.CitiesSorter</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>list</name>
+            <required> true </required>
+            <rtexprvalue> true </rtexprvalue>
+            <type>java.util.ArrayList</type>
+        </attribute>
+    </tag>
+
 </taglib>

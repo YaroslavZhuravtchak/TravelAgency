@@ -10,7 +10,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="page" value="/jsp/main.jsp" scope="session"/>
 <fmt:setBundle basename="resources.text" var="rb" />
 <fmt:setLocale value="${lang}" />
 
@@ -18,24 +17,23 @@
   <head>
     <meta charset="utf-8">
     <title>Main</title>
-    <link rel="stylesheet" type="text/css" href="../css/travel.css">
+    <link rel="stylesheet" type="text/css" href="../../css/travel.css">
   </head> 
 
   <body>
-
-  <c:if test="${  empty user  }">
+  <c:if test="${ empty user or role ne 'USER'}">
       <jsp:forward page="/jsp/login.jsp"/>
   </c:if>
 
   <%@ include file="/jsp/header.jsp"%>
-  <%@ include file="/jsp/nav.jsp"%>
+  <%@ include file="/jsp/user/nav.jsp"%>
 
 
 	<div id="tableContainer">
 	<div id="tableRow">
 
     <section id="main">
-      <img src="../images/travel.png" width="1245px">
+      <img src="../../images/travel.png" width="1254 px" height="300px">
     </section>
 
 
@@ -43,8 +41,6 @@
 	</div> <!-- tableContainer -->
 
   <%@ include file="/jsp/footer.jsp"%>
-
-    <script type="text/javascript" src="script/script.js"></script>
   </body>
 </html>
 

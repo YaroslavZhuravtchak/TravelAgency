@@ -1,4 +1,4 @@
-package com.zhuravchak.controller.command.impl;
+package com.zhuravchak.controller.command.impl.user;
 
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.command.ActionCommand;

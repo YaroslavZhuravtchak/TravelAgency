@@ -3,7 +3,7 @@ package com.zhuravchak.domain;
 /**
  * The Class City.
  */
-public class City extends Entity {
+public class City extends Entity implements Comparable<City> {
 
     /** The city ID. */
     private long id;
@@ -159,5 +159,10 @@ public class City extends Entity {
                 ", nameUA='" + nameUA + '\'' +
                 ", country=" + country +
                 '}';
+    }
+
+    @Override
+    public int compareTo(City o) {
+        return this.getName().compareTo(o.getName());
     }
 }
