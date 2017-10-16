@@ -13,14 +13,14 @@
 
     <div class="container">
         <ul>
-                <li ><a href="user?command=forward&page=main" style="color: aquamarine"><c:set var="command" value="updatelocal" scope="session"/><fmt:message key="menu.item1"/> </a></li>
+                <li ><a href="user?command=forward&page=main" style="color: aquamarine"><fmt:message key="menu.item1"/> </a></li>
                 <li ><a href="user?command=tour&type=shopping" style="color: aquamarine"><fmt:message key="menu.item4" /></a></li>
                 <li ><a href="user?command=tour&type=trip" style="color: aquamarine"><fmt:message key="menu.item3" /></a></li>
                 <li ><a href="user?command=tour&type=vacation" style="color: aquamarine"><fmt:message key="menu.item2" /></a></li>
 
                 <li ><a href="user?command=tour&type=hot" style="color: aquamarine"><fmt:message key="nav.hot" /></a></li>
                 <li ><a href="user?command=tour&type=discount" style="color: aquamarine"><fmt:message key="nav.discount" /></a></li>
-                <li ><a href="user?command=searchinfo" style="color: aquamarine"><fmt:message key="nav.search" /></a></li>
+                <li ><a href="user?command=preparesearch" style="color: aquamarine"><fmt:message key="nav.search" /></a></li>
         </ul>
         <!--LOGIN FORM-->
 
@@ -30,7 +30,6 @@
                 <input type="hidden" name="page" value="logout" />
                 <input type="submit" value="<fmt:message key="label.form.logout" />"/>
             </form>
-
         </div>
         <!--LOGIN FORM-->
     </div>

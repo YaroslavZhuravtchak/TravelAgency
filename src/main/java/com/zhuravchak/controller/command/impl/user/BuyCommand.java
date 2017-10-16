@@ -3,6 +3,7 @@ package com.zhuravchak.controller.command.impl.user;
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.domain.Order;
+import com.zhuravchak.model.dao.abstr.OrderDAO;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.domain.Pass;
@@ -30,7 +31,7 @@ public class BuyCommand implements ActionCommand {
        */
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
-        String page = ConfigurationManager.getProperty("path.page.buy");
+        String page = ConfigurationManager.getProperty("path.page.receipt");
         boolean result = false;
         Pass passFromSession = (Pass) request.getSession().getAttribute("pass");
         int quantity =  (int)request.getSession().getAttribute("quantity");
@@ -59,14 +60,16 @@ public class BuyCommand implements ActionCommand {
                 User user = df.getUserDAO(cn).findEntityById(userId);
                 session.setAttribute("isRegular",String.valueOf(user.isRegular()));
 
-                Order order = df.getOrderDAO(cn).findLastForUser(user).get(0);
+                OrderDAO orderDAO = df.getOrderDAO(cn);
+                Order order = orderDAO.findEntityById(orderDAO.findLastIdForUser(user));
+
                 request.setAttribute("order", order);
                 request.setAttribute("user", user);
                 request.setAttribute("pass", session.getAttribute("pass"));
                 request.setAttribute("tour", session.getAttribute("tour"));
 
-                //session.setAttribute("pass", null);
-               // session.setAttribute("tour", null);
+                session.setAttribute("pass", null);
+                session.setAttribute("tour", null);
             }
         }
         } catch (ServiceException | DAOException e) {

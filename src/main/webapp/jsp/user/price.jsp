@@ -31,7 +31,7 @@
             </section>
 
             <section class="tour_data" style="width: 30%">
-                <h1><fmt:message key="price.title"/></h1>
+                <h1 style="text-align: center"><fmt:message key="price.title"/></h1>
                 <img src="../../images/line.png" width="308px">
                 <table style="width: 400px">
                     <c:choose>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="travel" uri = "/WEB-INF/tld/custom.tld" %>
 
 
 <fmt:setLocale value="${lang}" scope="session"/>
@@ -23,7 +23,10 @@
 
 
 
-<%@ include file="/jsp/header.jsp"%>
+<header class="top"  style="background-image: url(../images/hb.jpg)";>
+    <travel:showUser />
+    <img id="headerLogo" src="../images/yy.png"  height="200px" alt="Header logo image">
+</header>
 <%@ include file="/jsp/user/nav.jsp"%>
 
 <main>
@@ -39,15 +42,22 @@
                        <h1 style="text-align: center"><fmt:message key="buy.ssuccessful1" /><br>
                            <fmt:message key="buy.ssuccessful2" /></h1>
                         <br>
+                        <fmt:setBundle basename="text" />
                         <table style="width: 400px;  ">
-                            <tr><td>Order №:</td><td class="info">${order.id}</td></tr>
-                              <tr><td>Customer:</td><td class="info">${user.firstName} ${user.lastname}</td></tr>
-                           <tr><td>Tour name:</td><td class="info">${tour.name}</td></tr>
-                            <tr><td>Quantity:</td><td class="info">${order.quantity}</td></tr>
-                            <tr><td>Date of departure:</td><td class="info">${pass.leavingDate}</td></tr>
-                            <tr><td>Date of order:</td><td class="info">${order.orderDate}</td></tr>
-                            <tr><td>Price:</td><td class="info">${order.totalPrice}</td></tr>
-
+                            <tr><td><fmt:message key="tour.buy.number" />:</td><td class="info">${order.id}</td></tr>
+                              <tr><td><fmt:message key="tour.buy.customer" />:</td><td class="info">${user.firstName} ${user.lastname}</td></tr>
+                        <c:choose>
+                            <c:when test="${lang=='uk_UA'}">
+                           <tr><td><fmt:message key="tour.buy.tour.name" />:</td><td class="info">${tour.nameUA}</td></tr>
+                            </c:when>
+                            <c:otherwise>
+                            <tr><td><fmt:message key="tour.buy.tour.name" />:</td><td class="info">${tour.name}</td></tr>
+                            </c:otherwise>
+                        </c:choose>
+                            <tr><td><fmt:message key="tour.buy.quantity" />:</td><td class="info">${order.quantity}</td></tr>
+                            <tr><td><fmt:message key="tour.buy.departure.date" />:</td><td class="info">${pass.leavingDate}</td></tr>
+                            <tr><td><fmt:message key="tour.buy.order.date" />:</td><td class="info">${order.orderDate}</td></tr>
+                            <tr><td><fmt:message key="tour.buy.price" />:</td><td class="info">${order.totalPrice}</td></tr>
                         </table>
 
                     </c:when>

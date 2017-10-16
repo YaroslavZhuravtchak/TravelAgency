@@ -91,6 +91,7 @@ public class MySqlTourDAO extends TourDAO {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
+
         } catch (Exception e) {
             throw new DAOException(e);
         }

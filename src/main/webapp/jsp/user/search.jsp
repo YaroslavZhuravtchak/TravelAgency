@@ -21,6 +21,8 @@
 </head>
 <body>
 
+${role.we}
+
 <%@ include file="/jsp/header.jsp"%>
 <%@ include file="/jsp/user/nav.jsp"%>
 

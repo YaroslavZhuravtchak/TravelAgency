@@ -7,8 +7,7 @@
 --%>
 
 <footer>
-    &copy; 2017, Yaroslav Zhuravchak
+    &copy; 2017, <fmt:message key="footer.one" />
     <br>
-    All trademarks and registered trademarks appearing on
-    this site are the property of their respective owners.
+    <fmt:message key="footer.two" />.
 </footer>

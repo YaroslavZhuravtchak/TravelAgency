@@ -10,11 +10,7 @@ import com.zhuravchak.domain.enums.TourType;
 import com.zhuravchak.model.connection.ConnectionPool;
 import com.zhuravchak.model.dao.abstr.CountryDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
-import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
-import com.zhuravchak.model.dao.impl.MySqlCountryDAO;
-import com.zhuravchak.model.dao.impl.MySqlTourDAO;
 import com.zhuravchak.model.exception.DAOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
@@ -23,7 +19,7 @@ import java.util.List;
 /**
  * Created by Yaroslav on 07-Oct-17.
  */
-public class SearchInfoCommand implements ActionCommand {
+public class PrepareSearchCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {

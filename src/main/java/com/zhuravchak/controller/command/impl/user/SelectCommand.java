@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 
 /**
- * The Class OrderCommand.
+ * The Class SelectCommand.
  */
-public class OrderCommand implements ActionCommand {
+public class SelectCommand implements ActionCommand {
 
-    private final static Logger LOG = Logger.getLogger(OrderCommand.class);
+    private final static Logger LOG = Logger.getLogger(SelectCommand.class);
 
     /* (non-Javadoc)
       * @see com.zhuravchak.controller.command.ActionCommand#execute(HttpServletRequest, HttpServletResponse)
@@ -44,7 +44,7 @@ public class OrderCommand implements ActionCommand {
                 ConnectionPool.closeConnection(cn);
             }
         }
-        page = ConfigurationManager.getProperty("path.page.order");
+        page = ConfigurationManager.getProperty("path.page.select");
         request.getSession().setAttribute("pass", pass);
         request.getSession().setAttribute("tour", tour);
 

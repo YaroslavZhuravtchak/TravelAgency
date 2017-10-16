@@ -146,5 +146,5 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
      * @return the list
      * @throws DAOException the DAO exception
      */
-    public abstract List<Order> findLastForUser(User user) throws DAOException ;
+    public abstract long findLastIdForUser(User user) throws DAOException ;
 }

@@ -1,11 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
   User: Yaroslav
-  Date: 26-Sep-17
-  Time: 11:57 AM
+  Date: 15-Oct-17
+  Time: 8:44 PM
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ page isErrorPage="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -50,24 +49,19 @@
                 <input type="submit" value="<fmt:message key="label.form.logout" />"/>
             </form>
         </div>
+
     </div>
 </nav>
 <main>
-    <section class="tour_info" style="width: 30%; border: solid black 1px;height: 350px;padding-left: 430px; padding-right: 430px ">
+    <section class="tour_info" style="width: 30%; border: solid black 1px;height: 350px;padding-left: 500px; padding-right: 430px ">
         <br><br>
-        <h1 style="text-align: center; color: red"><fmt:message key="error.title" /></h1>
+        <h1 style="text-align: left; color: red"><fmt:message key="404.title"/></h1>
         <br>
         <c:if test="${not empty pageContext.errorData.requestURI}">
-            <fmt:message key="error.request" />: <span style="color: red">${pageContext.errorData.requestURI}</span><br/>
-        </c:if>
-        <c:if test="${not empty pageContext.errorData.servletName}">
-            <fmt:message key="error.servlet" />: <span style="color: red">${pageContext.errorData.servletName}</span> <br/>
+            <fmt:message key="error.request"/><span style="color: red">: ${pageContext.errorData.requestURI}</span> <br/>
         </c:if>
         <c:if test="${not empty pageContext.errorData.statusCode}">
-            <fmt:message key="error.code" />: <span style="color: red">${pageContext.errorData.statusCode}</span><br/>
-        </c:if>
-        <c:if test="${not empty pageContext.errorData.throwable}">
-        <fmt:message key="error.exception" />:<span style="color: red"> ${pageContext.errorData.throwable}
+            <fmt:message key="error.code"/>: <span style="color: red">${pageContext.errorData.statusCode}</span> <br/>
         </c:if>
     </section>
 </main>

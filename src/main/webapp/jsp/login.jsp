@@ -38,7 +38,6 @@
         </div>
 
     </div>
-
 </nav>
 <!--LOGIN FORM-->
 <main>
@@ -58,12 +57,8 @@
                         <input type="text" name="login" required />
                         <br/><fmt:message key="login.password"  /><br/>
                         <input type="password" name="password" required/>
-                        <br>
+                        <br><br><br>
                             ${errorLoginPassMessage}
-                        <br/>
-                            ${wrongAction}
-                        <br/>
-                            ${nullPage}
                         <br/>
                         <input type="submit" value="<fmt:message key="login.submit"  />"/>
                     </form>

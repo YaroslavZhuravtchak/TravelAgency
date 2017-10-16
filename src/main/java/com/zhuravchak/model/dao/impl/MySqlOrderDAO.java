@@ -18,8 +18,7 @@ public class MySqlOrderDAO extends OrderDAO {
 
     private static final String SQL_SELECT_ALL_FOR_TOUR = "select * from orders where tour_id = ?";
     private static final String SQL_SELECT_ALL_FOR_USER = "select * from orders where user_id = ?";
-    private static final String SQL_SELECT_LAST_FOR_USER = "select max(id) as id, pass_id, user_id, " +
-                        "quantity, totalPrice, order_date from orders where user_id = ?";
+    private static final String SQL_SELECT_LAST_FOR_USER = "select max(id) as id from orders where user_id = ?";
 
 
     /**
@@ -72,15 +71,16 @@ public class MySqlOrderDAO extends OrderDAO {
      * @return the list
      * @throws DAOException the DAO exception
      */
-    public List<Order> findLastForUser(User user) throws DAOException {
-        List<Order> list;
+    public long findLastIdForUser(User user) throws DAOException {
+        long id;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_LAST_FOR_USER)) {
             statement.setLong(1,user.getId());
             ResultSet rs = statement.executeQuery();
-            list = parseResultSet(rs);
+            rs.next();
+            id = rs.getLong("id");
         } catch (Exception e) {
             throw new DAOException(e);
         }
-        return list;
+        return id;
     }
 }

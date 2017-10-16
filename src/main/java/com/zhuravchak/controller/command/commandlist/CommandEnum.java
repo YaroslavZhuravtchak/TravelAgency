@@ -15,7 +15,7 @@ public enum CommandEnum {
     TOUR (new TourCommand()),
 
     /**The order*/
-    ORDER (new OrderCommand()),
+    SELECT (new SelectCommand()),
 
     /** The login. */
     LOGIN ( new LoginCommand()),
@@ -48,7 +48,7 @@ public enum CommandEnum {
     SEARCH (new SearchCommand()),
 
     /** The searchinfo. */
-    SEARCHINFO(new SearchInfoCommand()),
+    PREPARESEARCH(new PrepareSearchCommand()),
 
     /** The PrepereAddPass. */
     PREPAREADDPASS (new PrepereAddPassCommand()),

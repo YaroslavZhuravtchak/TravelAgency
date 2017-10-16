@@ -124,7 +124,7 @@
                                   <td>
 
                                     <form class="login"  action="user"  >
-                                        <input type="hidden" name="command" value="order" />
+                                        <input type="hidden" name="command" value="select" />
                                       <input type="hidden" name="id" value="${pass.id}" />
                                       <input type="submit"  value="<fmt:message key="tour.choose"/>"/>
                                       </form><br><br>

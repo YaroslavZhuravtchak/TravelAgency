@@ -33,7 +33,7 @@
                 </section>
 
                 <section class="tour_data">
-                    <h1><fmt:message key="order.title"/></h1>
+                    <h1 style="text-align: center"><fmt:message key="order.title"/></h1>
 
                     <table style="width: 400px">
                     <c:choose>

@@ -3,6 +3,7 @@ package com.zhuravchak.controller.command.factory;
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.command.impl.EmptyCommand;
 import com.zhuravchak.controller.command.commandlist.CommandEnum;
+import com.zhuravchak.controller.util.resource.ConfigurationManager;
 import com.zhuravchak.controller.util.resource.MessageManager;
 import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +35,7 @@ public class ActionFactory {
             System.out.println(currentEnum);
             current = currentEnum.getCurrentCommand();
         } catch (IllegalArgumentException e) {
-            request.setAttribute("wrongAction", action
-                   + MessageManager.getProperty("message.wrongaction"));
+            LOG.info(MessageManager.getProperty("message.wrongaction" )  + " :"+action);
         }
         return current;
     }
