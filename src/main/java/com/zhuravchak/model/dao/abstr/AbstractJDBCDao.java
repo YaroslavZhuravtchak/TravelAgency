@@ -3,6 +3,8 @@ package com.zhuravchak.model.dao.abstr;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.Entity;
 import com.zhuravchak.model.connection.ConnectionPool;
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,8 @@ import java.util.List;
  * @param <T> the generic type
  */
 public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T> {
+
+    private final static Logger LOG = Logger.getLogger(AbstractJDBCDao.class);
 
     protected Connection connection;
 
@@ -177,6 +181,7 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
                 throw new DAOException("On persist modify more then 1 record: " + count);
             }
         } catch (Exception e) {
+            LOG.error(e+"(create)");
             throw new DAOException(e);
         }
 

@@ -1,5 +1,6 @@
 package com.zhuravchak.model.dao.abstr;
 
+import com.zhuravchak.model.exception.CountryDAOException;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.Country;
 import org.apache.log4j.Logger;
@@ -62,13 +63,13 @@ public abstract class CountryDAO extends AbstractJDBCDao<Country> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement ps, Country entity) throws DAOException {
+    protected void prepareStatementForUpdate(PreparedStatement ps, Country entity) throws CountryDAOException {
         try {
             ps.setString(1, entity.getName());
             ps.setString(2, entity.getNameUA());
             ps.setLong(3, entity.getId());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new CountryDAOException("SQL exception (prepareStatementForUpdate): " + e,e);
         }
     }
 
@@ -76,12 +77,12 @@ public abstract class CountryDAO extends AbstractJDBCDao<Country> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForCreate(PreparedStatement ps, Country entity) throws DAOException {
+    protected void prepareStatementForCreate(PreparedStatement ps, Country entity) throws CountryDAOException {
         try {
             ps.setString(1, entity.getName());
             ps.setString(2, entity.getNameUA());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new CountryDAOException("SQL exception (prepareStatementForCreate): " + e,e);
         }
     }
 
@@ -89,7 +90,7 @@ public abstract class CountryDAO extends AbstractJDBCDao<Country> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    public List<Country> parseResultSet (ResultSet resultSet)  throws DAOException {
+    public List<Country> parseResultSet (ResultSet resultSet)  throws CountryDAOException {
         List<Country> countries = new ArrayList<>();
 
         try {
@@ -105,16 +106,16 @@ public abstract class CountryDAO extends AbstractJDBCDao<Country> {
                 countries.add(country);
             }
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new CountryDAOException("SQL exception (parseResultSet): " + e,e);
         }
         return countries;
     }
 
     /**
-     * Find all countries after now.
+     * Find all countries after now with actual passes.
      *
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CountryDAOException
      */
-    public abstract List<Country> getAllWithActualPasses() throws DAOException;
+    public abstract List<Country> getAllWithActualPasses() throws CountryDAOException;
 }

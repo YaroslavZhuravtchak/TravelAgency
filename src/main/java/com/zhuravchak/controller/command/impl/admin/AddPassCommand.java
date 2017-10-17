@@ -8,7 +8,6 @@ import com.zhuravchak.model.connection.ConnectionPool;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.exception.DAOException;
 import org.apache.log4j.Logger;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
@@ -21,7 +20,9 @@ public class AddPassCommand implements ActionCommand{
 
     private final static Logger LOG = Logger.getLogger(AddPassCommand .class);
 
-
+    /* (non-Javadoc)
+           * @see com.zhuravchak.controller.command.ActionCommand#execute(HttpServletRequest, HttpServletResponse)
+           */
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
 
@@ -58,7 +59,6 @@ public class AddPassCommand implements ActionCommand{
                 ConnectionPool.closeConnection(cn);
             }
         }
-
         return page;
     }
 }

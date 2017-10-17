@@ -10,9 +10,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<fmt:setBundle basename="resources.text" var="rb" />
+
 <fmt:setLocale value="${lang}" scope="session"/>
 <fmt:setBundle basename="text" />
+
 <html>
 <head>
     <title>Tours</title>
@@ -26,6 +27,18 @@
 <%@ include file="/jsp/user/nav.jsp"%>
 <main>
     <div class="tableContainer" >
+
+        <c:if test="${tours[0] == null}">
+            <div class="tableRow">
+
+                <fmt:setBundle basename="messages" />
+                <section class="tour_info" style="width: 30%; border: solid black 1px;height: 350px;padding-left: 430px; padding-right: 430px ">
+                                  <br><br><br><br>
+                            <h1 style="text-align: center"><fmt:message key="tours.not" /><br>
+                    <img src="../../images/line.png" width="308px">
+                </section>
+                <fmt:setBundle basename="text" />
+        </c:if>
         <c:forEach var="tour" items="${tours}" begin="0">
             <div class="tableRow" style="border-bottom: solid #b5a789 3px" >
                 <section class="tour_img">
@@ -47,7 +60,6 @@
                             </h3>
                         </c:when>
                         <c:otherwise>
-
                             <h3 style="text-align: center; font-family: Calibri">
                                 <c:forEach var="city" items="${tour.cities}" begin="0" varStatus="i" >
                                     <c:if test="${i.count>1}">-</c:if>
@@ -91,8 +103,6 @@
                             <p> ${tour.description}</p>
                         </c:otherwise>
                     </c:choose>
-
-
                 </section>
 
                 <section class="tour_data">
@@ -105,24 +115,23 @@
                             <tr>
                                 <td style="padding-left: 10px">
                                     <h2> <fmt:message key="tour.journey"/> № ${i.count}</h2>
-                                    <em><fmt:message key="tuor.data.departure"/></em>: ${pass.leavingDate}<br>
-                                    <em><fmt:message key="tour.quantity"/></em>: ${pass.quantityAvailable}<br>
+                                    <em><fmt:message key="tuor.data.departure"/></em>: <span style="color: maroon">${pass.leavingDate}</span><br>
+                                    <em><fmt:message key="tour.quantity"/></em>: <span style="color: maroon">${pass.quantityAvailable}</span><br>
                                     <c:choose>
                                         <c:when test="${pass.hot}">
-                                          <em><fmt:message key="tour.price"/></em>: ${pass.price/2}$<br>
+                                          <em><fmt:message key="tour.price"/></em>: <span style="color: maroon">${pass.price/2}$</span><br>
                                         </c:when>
                                         <c:when test="${pass.discountForRegular > 0}">
-                                            <em><fmt:message key="tour.price"/></em>: ${pass.price}$<br>
-                                            <em><fmt:message key="tour.discount"/></em>: ${pass.discountForRegular}%<br>
+                                            <em><fmt:message key="tour.price"/></em>: <span style="color: maroon">${pass.price}$</span><br>
+                                            <em><fmt:message key="tour.discount"/></em>: <span style="color: maroon">${pass.discountForRegular}%</span><br>
                                         </c:when>
                                         <c:otherwise>
-                                            <em><fmt:message key="tour.price"/></em>: ${pass.price}$<br>
+                                            <em><fmt:message key="tour.price"/></em>: <span style="color: maroon">${pass.price}$</span><br>
                                         </c:otherwise>
                                     </c:choose>
                                 </td>
 
                                   <td>
-
                                     <form class="login"  action="user"  >
                                         <input type="hidden" name="command" value="select" />
                                       <input type="hidden" name="id" value="${pass.id}" />
@@ -138,14 +147,11 @@
                                         </c:when>
                                     </c:choose>
                                   </td>
-
                             </tr>
                         </table>
                         <br>
                     </c:forEach>
-
                 </section>
-
             </div>
         </c:forEach>
     </div>

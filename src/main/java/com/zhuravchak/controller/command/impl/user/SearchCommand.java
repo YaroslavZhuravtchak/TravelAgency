@@ -18,6 +18,10 @@ import java.util.List;
 
 
 public class SearchCommand  implements ActionCommand {
+
+    /* (non-Javadoc)
+       * @see com.zhuravchak.controller.command.ActionCommand#execute(HttpServletRequest, HttpServletResponse)
+       */
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
 

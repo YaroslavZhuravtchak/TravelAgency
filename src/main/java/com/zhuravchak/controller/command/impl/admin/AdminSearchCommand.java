@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminSearchCommand implements ActionCommand {
+
+    /* (non-Javadoc)
+       * @see com.zhuravchak.controller.command.ActionCommand#execute(HttpServletRequest, HttpServletResponse)
+       */
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
 

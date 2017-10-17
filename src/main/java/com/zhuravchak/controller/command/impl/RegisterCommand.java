@@ -43,7 +43,7 @@ public class RegisterCommand implements ActionCommand {
         String password = request.getParameter(PARAM_PASSWORD);
         String email = request.getParameter(PARAM_EMAIL);
         String firstname = request.getParameter(PARAM_FIRSTNAME);
-        String lastname = request.getParameter(PARAM_FIRSTNAME);
+        String lastname = request.getParameter(PARAM_LASTNAME);
         String phone = request.getParameter(PARAM_PHONE);
 
         LOG.debug("Encoding (Register): " + request.getCharacterEncoding());
@@ -77,7 +77,7 @@ public class RegisterCommand implements ActionCommand {
                 page = ConfigurationManager.getProperty("path.page.register");
             }
         } catch (ServiceException|DAOException e) {
-            LOG.error(e);
+            LOG.error(e + " can not create user: ");
             throw new CommandException(e);
         } finally {
             if(cn != null){

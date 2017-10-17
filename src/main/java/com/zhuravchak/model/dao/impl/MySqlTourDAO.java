@@ -1,8 +1,8 @@
 package com.zhuravchak.model.dao.impl;
 
-import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.abstr.TourDAO;
 import com.zhuravchak.domain.Tour;
+import com.zhuravchak.model.exception.TourDAOException;
 import org.apache.log4j.Logger;
 import java.sql.*;
 import java.time.LocalDate;
@@ -61,31 +61,25 @@ public class MySqlTourDAO extends TourDAO {
         super(connection);
     }
 
-    /**
-     * Find all tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllAfterNowWithSeats() throws DAOException {
+    /* (non-Javadoc)
+          * @see com.zhuravchak.model.dao.abstr.TourDao
+          */
+    public List<Tour> getAllAfterNowWithSeats() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_AFTER_NOW_WITH_SEARS)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllAfterNowWithSeats: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all trip tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllTripAfterNowWithSeats() throws DAOException {
+    /* (non-Javadoc)
+        * @see com.zhuravchak.model.dao.abstr.TourDao
+        */
+    public List<Tour> getAllTripAfterNowWithSeats() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_TRIP_AFTER_NOW_WITH_SEARS)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
@@ -93,54 +87,45 @@ public class MySqlTourDAO extends TourDAO {
             list = parseResultSet(rs);
 
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllTripAfterNowWithSeats: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all vacation tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllVacationAfterNowWithSeats() throws DAOException {
+       /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllVacationAfterNowWithSeats() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_VACATION_AFTER_NOW_WITH_SEARS)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllVacationAfterNowWithSeats: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all shopping tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllShoppingAfterNowWithSeats() throws DAOException {
+    /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllShoppingAfterNowWithSeats() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_SHOPPING_AFTER_NOW_WITH_SEARS)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllShoppingAfterNowWithSeats: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllAfterNowByCountryId(Long countryId, String cityfrom, String tourType) throws DAOException {
+    /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllAfterNowByCountryId(Long countryId, String cityfrom, String tourType) throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_BY_COUNTRY_ID_TOUR_AND_CITIFROME_TYPE)) {
 
@@ -152,130 +137,109 @@ public class MySqlTourDAO extends TourDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllAfterNowByCountryId: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllAfterNow() throws DAOException {
+    /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllAfterNow() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_AFTER_NOW)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllAfterNow: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all trip tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllTrip() throws DAOException {
+    /* (non-Javadoc)
+          * @see com.zhuravchak.model.dao.abstr.TourDao
+          */
+    public List<Tour> getAllTrip() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_TRIP)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("TourDAOException: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all vacation tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllVacation() throws DAOException {
+    /* (non-Javadoc)
+        * @see com.zhuravchak.model.dao.abstr.TourDao
+        */
+    public List<Tour> getAllVacation() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_VACATION)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllVacation: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all shopping tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllShopping() throws DAOException {
+    /* (non-Javadoc)
+          * @see com.zhuravchak.model.dao.abstr.TourDao
+          */
+    public List<Tour> getAllShopping() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_SHOPPING)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllShopping: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllHotAfterNowWithSeats() throws DAOException {
+    /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllHotAfterNowWithSeats() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_HOT_AFTER_NOW_WITH_SEATS)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllHotAfterNowWithSeats: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllAfterNowWithSeatsAndDiscount() throws DAOException {
+    /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllAfterNowWithSeatsAndDiscount() throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_AFTER_NOW_WITH_SEATS_AND_DISCOUNT)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllAfterNowWithSeatsAndDiscount: ",e);
         }
         return list;
     }
 
-    /**
-     * Find all trip tours after now.
-     *
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public List<Tour> getAllByCityId(Long cityId) throws DAOException {
+    /* (non-Javadoc)
+         * @see com.zhuravchak.model.dao.abstr.TourDao
+         */
+    public List<Tour> getAllByCityId(Long cityId) throws TourDAOException {
         List<Tour> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_BY_CITY)) {
             statement.setLong(1, cityId);
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new TourDAOException("getAllByCityId: ",e);
         }
         return list;
     }

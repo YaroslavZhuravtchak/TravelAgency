@@ -1,18 +1,16 @@
 package com.zhuravchak.model.dao.impl;
 
-import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.abstr.PassDAO;
 import com.zhuravchak.domain.Pass;
 import com.zhuravchak.domain.Tour;
+import com.zhuravchak.model.exception.PassDAOException;
 import org.apache.log4j.Logger;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Yaroslav on 25-Sep-17.
- */
+
 public class MySqlPassDAO extends PassDAO {
 
     private final static Logger LOG = Logger.getLogger(PassDAO.class);
@@ -40,9 +38,9 @@ public class MySqlPassDAO extends PassDAO {
      * Find all passes for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws PassDAOException
      */
-    public List<Pass> findAllForTourWithSeats(Tour tour) throws DAOException {
+    public List<Pass> findAllForTourWithSeats(Tour tour) throws PassDAOException {
         List<Pass> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_FOR_TOUR_WITH_SEATS)) {
 
@@ -52,7 +50,7 @@ public class MySqlPassDAO extends PassDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new PassDAOException(" findAllForTourWithSeats: ",e);
         }
         Collections.sort(list);
         return list;
@@ -62,9 +60,9 @@ public class MySqlPassDAO extends PassDAO {
      * Find all passes for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws PassDAOException
      */
-    public List<Pass> findAllForTour(Tour tour) throws DAOException {
+    public List<Pass> findAllForTour(Tour tour) throws PassDAOException {
         List<Pass> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_FOR_TOUR)) {
 
@@ -74,7 +72,7 @@ public class MySqlPassDAO extends PassDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new PassDAOException(" findAllForTour: ", e);
         }
         Collections.sort(list);
         return list;
@@ -84,9 +82,9 @@ public class MySqlPassDAO extends PassDAO {
      * Find all passes for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws PassDAOException
      */
-    public List<Pass> findAllHot(Tour tour) throws DAOException {
+    public List<Pass> findAllHot(Tour tour) throws PassDAOException {
         List<Pass> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_HOT_FOR_TOUR)) {
 
@@ -96,7 +94,7 @@ public class MySqlPassDAO extends PassDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new PassDAOException(" findAllHot: ", e);
         }
         Collections.sort(list);
         return list;
@@ -106,9 +104,9 @@ public class MySqlPassDAO extends PassDAO {
      * Find all passes for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws PassDAOException
      */
-    public List<Pass> findAllWithDiscount(Tour tour) throws DAOException {
+    public List<Pass> findAllWithDiscount(Tour tour) throws PassDAOException {
         List<Pass> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_FOR_TOUR_WITH_DISCOUNT)) {
 
@@ -118,7 +116,7 @@ public class MySqlPassDAO extends PassDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new PassDAOException(" findAllWithDiscount: ", e);
         }
         Collections.sort(list);
         return list;

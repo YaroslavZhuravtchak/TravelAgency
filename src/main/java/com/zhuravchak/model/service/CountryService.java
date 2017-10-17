@@ -1,16 +1,11 @@
 package com.zhuravchak.model.service;
 
-import com.zhuravchak.domain.City;
 import com.zhuravchak.domain.Country;
 import com.zhuravchak.model.connection.ConnectionPool;
 import com.zhuravchak.model.dao.abstr.CityDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
-import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
-import com.zhuravchak.model.dao.impl.MySqlCityDAO;
-import com.zhuravchak.model.dao.impl.MySqlCountryDAO;
 import com.zhuravchak.model.exception.ServiceException;
 import org.apache.log4j.Logger;
-
 import java.sql.Connection;
 import java.util.List;
 

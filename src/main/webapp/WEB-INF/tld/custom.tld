@@ -7,19 +7,12 @@
 
     <tlib-version>1.1</tlib-version>
     <short-name>travel</short-name>
-    <uri> customtaglib</uri>
+    <uri>/WEB-INF/tld/custom.tld</uri>
 
     <tag>
         <description>show user</description>
         <name>showUser</name>
         <tag-class>com.zhuravchak.controller.util.mytag.UserShower</tag-class>
-        <body-content>empty</body-content>
-    </tag>
-
-    <tag>
-        <description>show flag</description>
-        <name>showFlag</name>
-        <tag-class>com.zhuravchak.controller.util.mytag.FlagShower</tag-class>
         <body-content>empty</body-content>
     </tag>
 

@@ -7,11 +7,27 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LanguageFilter implements Filter {
+
+    /**
+     * Inits.
+     *
+     * @param filterConfig the f config
+     * @throws ServletException the maincontroler exception
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
 
+    /**
+     * Do filter.
+     *
+     * @param servletRequest the request
+     * @param servletResponse the response
+     * @param filterChain the chain
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ServletException the maincontroler exception
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
@@ -28,6 +44,9 @@ public class LanguageFilter implements Filter {
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
+    /**
+     * Destroy.
+     */
     @Override
     public void destroy() {
 

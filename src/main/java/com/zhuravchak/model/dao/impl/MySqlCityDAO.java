@@ -1,7 +1,7 @@
 package com.zhuravchak.model.dao.impl;
 
 import com.zhuravchak.domain.Country;
-import com.zhuravchak.model.exception.DAOException;
+import com.zhuravchak.model.exception.CityDAOException;
 import com.zhuravchak.model.dao.abstr.CityDAO;
 import com.zhuravchak.domain.City;
 import com.zhuravchak.domain.Tour;
@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -44,27 +43,26 @@ public class MySqlCityDAO extends CityDAO {
      * Find all city for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CityDAOException
      */
-    public List<City> findAllForTour(Tour tour) throws DAOException {
+    public List<City> findAllForTour(Tour tour) throws CityDAOException {
         List<City> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_BY_ENTiTY)) {
             statement.setLong(1,tour.getId());
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new CityDAOException(" findAllForTour ", e);
         }
         return list;
     }
 
     /**
-     * Find all cities after now.
      *
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CityDAOException
      */
-    public List<City> getAllWithActualPassesForCountry(Country country) throws DAOException {
+    public List<City> getAllWithActualPassesForCountry(Country country) throws CityDAOException {
         List<City> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_WITH_ACTUAL_PASSES)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
@@ -72,24 +70,23 @@ public class MySqlCityDAO extends CityDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new CityDAOException(" getAllWithActualPassesForCountry ", e);
         }
         return list;
     }
 
     /**
-     * Find all cities after now.
      *
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CityDAOException
      */
-    public List<City> getAllWithTours() throws DAOException {
+    public List<City> getAllWithTours() throws CityDAOException {
         List<City> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_WITH_TOURS)) {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new CityDAOException(" getAllWithTours ",e);
         }
         return list;
     }

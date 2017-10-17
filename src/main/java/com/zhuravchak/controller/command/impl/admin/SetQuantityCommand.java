@@ -9,7 +9,6 @@ import com.zhuravchak.model.dao.abstr.PassDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.exception.DAOException;
 import org.apache.log4j.Logger;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.MalformedURLException;

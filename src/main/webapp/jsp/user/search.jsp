@@ -21,8 +21,6 @@
 </head>
 <body>
 
-${role.we}
-
 <%@ include file="/jsp/header.jsp"%>
 <%@ include file="/jsp/user/nav.jsp"%>
 
@@ -107,7 +105,6 @@ ${role.we}
             </section>
 
         </div>
-    </div>
     </div>
 </main>
 

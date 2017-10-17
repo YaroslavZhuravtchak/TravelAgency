@@ -1,9 +1,8 @@
 package com.zhuravchak.model.dao.impl;
 
 import com.zhuravchak.domain.Country;
-import com.zhuravchak.domain.Tour;
 import com.zhuravchak.model.dao.abstr.CountryDAO;
-import com.zhuravchak.model.exception.DAOException;
+import com.zhuravchak.model.exception.CountryDAOException;
 import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.Date;
@@ -35,16 +34,16 @@ public class MySqlCountryDAO extends CountryDAO {
      * Find all countries after now.
      *
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CountryDAOException
      */
-    public List<Country> getAllWithActualPasses() throws DAOException {
+    public List<Country> getAllWithActualPasses() throws CountryDAOException {
         List<Country> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_WITH_ACTUAL_PASSES)) {
             statement.setDate(1, Date.valueOf(LocalDate.now()));
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new CountryDAOException("getAllWithActualPasses", e);
         }
         return list;
     }

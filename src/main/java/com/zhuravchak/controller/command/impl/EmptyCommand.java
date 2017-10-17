@@ -4,8 +4,6 @@ import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.util.resource.ConfigurationManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 public class EmptyCommand implements ActionCommand {
 

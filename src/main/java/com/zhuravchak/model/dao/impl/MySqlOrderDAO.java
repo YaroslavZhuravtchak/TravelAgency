@@ -5,6 +5,7 @@ import com.zhuravchak.model.dao.abstr.OrderDAO;
 import com.zhuravchak.domain.Order;
 import com.zhuravchak.domain.Tour;
 import com.zhuravchak.domain.User;
+import com.zhuravchak.model.exception.OrderDAOException;
 import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.List;
@@ -33,16 +34,16 @@ public class MySqlOrderDAO extends OrderDAO {
      * Find all orders for user.
      * @param  user the user
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws OrderDAOException
      */
-    public List<Order> findAllForUser(User user) throws DAOException {
+    public List<Order> findAllForUser(User user) throws OrderDAOException {
         List<Order> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_FOR_USER)) {
             statement.setLong(1,user.getId());
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new OrderDAOException(" findAllForUser ", e);
         }
         return list;
     }
@@ -51,16 +52,16 @@ public class MySqlOrderDAO extends OrderDAO {
      * Find all orders for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws OrderDAOException
      */
-    public List<Order> findAllForTour(Tour tour) throws DAOException {
+    public List<Order> findAllForTour(Tour tour) throws OrderDAOException {
         List<Order> list;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_ALL_FOR_TOUR)) {
             statement.setLong(1, tour.getId());
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new OrderDAOException("  findAllForTour ",e);
         }
         return list;
     }
@@ -69,9 +70,9 @@ public class MySqlOrderDAO extends OrderDAO {
      * Find last order for user.
      * @param  user the user
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws OrderDAOException
      */
-    public long findLastIdForUser(User user) throws DAOException {
+    public long findLastIdForUser(User user) throws OrderDAOException {
         long id;
         try (PreparedStatement statement = connection.prepareStatement(SQL_SELECT_LAST_FOR_USER)) {
             statement.setLong(1,user.getId());
@@ -79,7 +80,7 @@ public class MySqlOrderDAO extends OrderDAO {
             rs.next();
             id = rs.getLong("id");
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new OrderDAOException(" findLastIdForUser ", e);
         }
         return id;
     }

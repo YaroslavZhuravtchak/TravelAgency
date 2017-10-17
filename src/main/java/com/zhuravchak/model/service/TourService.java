@@ -4,10 +4,6 @@ import com.zhuravchak.model.dao.abstr.CityDAO;
 import com.zhuravchak.model.dao.abstr.CountryDAO;
 import com.zhuravchak.model.dao.abstr.PassDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
-import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
-import com.zhuravchak.model.dao.impl.MySqlCityDAO;
-import com.zhuravchak.model.dao.impl.MySqlCountryDAO;
-import com.zhuravchak.model.dao.impl.MySqlPassDAO;
 import com.zhuravchak.domain.City;
 import com.zhuravchak.domain.Tour;
 import com.zhuravchak.model.connection.ConnectionPool;
@@ -46,7 +42,7 @@ public class TourService {
     }
 
     /**
-     * Fill tours with passes and cities.
+     * Fill tours for user.
      * @param  tours the list of tours
      * @return void
      * @throws ServiceException the Service exception
@@ -79,7 +75,7 @@ public class TourService {
     }
 
     /**
-     * Fill tours with passes and cities.
+     * Fill tours with passes and cities for admin.
      * @param  tours the list of tours
      * @return void
      * @throws ServiceException the Service exception
@@ -113,7 +109,7 @@ public class TourService {
 
 
     /**
-     * Fill tours with passes and cities.
+     * Fill tours with hot passes and cities.
      * @param  tours the list of tours
      * @return void
      * @throws ServiceException the Service exception
@@ -147,7 +143,7 @@ public class TourService {
 
 
     /**
-     * Fill tours with passes and cities.
+     * Fill tours with discount passes and cities.
      * @param  tours the list of tours
      * @return void
      * @throws ServiceException the Service exception

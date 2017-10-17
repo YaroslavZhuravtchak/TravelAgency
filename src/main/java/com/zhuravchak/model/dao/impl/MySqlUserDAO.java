@@ -1,8 +1,8 @@
 package com.zhuravchak.model.dao.impl;
 
-import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.abstr.UserDAO;
 import com.zhuravchak.domain.User;
+import com.zhuravchak.model.exception.UserDAOException;
 import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,9 +29,9 @@ public class MySqlUserDAO extends UserDAO {
      * Find user by id.
      * @param  login the string
      * @return the user
-     * @throws DAOException the DAO exception
+     * @throws UserDAOException
      */
-    public User findEntityByLogin(String login) throws DAOException {
+    public User findEntityByLogin(String login) throws UserDAOException {
         List<User> list;
         String sql = getSelectQuery();
         sql += " WHERE login = ?";
@@ -40,13 +40,13 @@ public class MySqlUserDAO extends UserDAO {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new UserDAOException(" findEntityByLogin ", e);
         }
         if (list == null || list.size() == 0) {
             return null;
         }
         if (list.size() > 1) {
-            throw new DAOException("Received more than one record.");
+            throw new UserDAOException(" Received more than one record(findEntityByLogin) ");
         }
         return list.iterator().next();
     }

@@ -47,20 +47,22 @@ public enum CommandEnum {
     /** The search. */
     SEARCH (new SearchCommand()),
 
-    /** The searchinfo. */
+    /** The prepare search. */
     PREPARESEARCH(new PrepareSearchCommand()),
 
-    /** The PrepereAddPass. */
+    /** The prepere adding pass. */
     PREPAREADDPASS (new PrepereAddPassCommand()),
 
-    /** The AddPass. */
+    /** The adding pass. */
     ADDPASS (new AddPassCommand()),
 
-    /** The Tour Admin. */
+    /** The admin's tour page . */
     TOURADMIN (new TourAdminCommand()),
 
+    /** The prepare search for admin. */
     PREPAREADMINSEARCH (new PrepareAdminSearchCommand()),
 
+    /** The search for admin. */
     SEARCHADMIN (new AdminSearchCommand()),
 
     /** The forward. */

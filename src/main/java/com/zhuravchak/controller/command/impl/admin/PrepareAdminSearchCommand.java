@@ -4,17 +4,12 @@ import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.util.resource.ConfigurationManager;
 import com.zhuravchak.domain.City;
-import com.zhuravchak.domain.Country;
 import com.zhuravchak.domain.Tour;
-import com.zhuravchak.domain.enums.CityFrom;
-import com.zhuravchak.domain.enums.TourType;
 import com.zhuravchak.model.connection.ConnectionPool;
 import com.zhuravchak.model.dao.abstr.CityDAO;
-import com.zhuravchak.model.dao.abstr.CountryDAO;
 import com.zhuravchak.model.dao.abstr.TourDAO;
 import com.zhuravchak.model.dao.factory.DAOFactory;
 import com.zhuravchak.model.exception.DAOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
@@ -23,6 +18,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class PrepareAdminSearchCommand implements ActionCommand{
+
+    /* (non-Javadoc)
+       * @see com.zhuravchak.controller.command.ActionCommand#execute(HttpServletRequest, HttpServletResponse)
+       */
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         Connection cn = null;

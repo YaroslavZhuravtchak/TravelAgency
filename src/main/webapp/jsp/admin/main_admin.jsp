@@ -36,7 +36,6 @@
             <img src="../../images/admin.png" width="1254 px" height="300px">
         </section>
 
-
     </div> <!-- tableRow -->
 </div> <!-- tableContainer -->
 

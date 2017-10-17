@@ -1,8 +1,8 @@
 package com.zhuravchak.model.dao.abstr;
 
 import com.zhuravchak.domain.Tour;
-import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.Pass;
+import com.zhuravchak.model.exception.PassDAOException;
 import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
@@ -63,14 +63,14 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
           * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
           */
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement ps, Pass entity) throws DAOException {
+    protected void prepareStatementForUpdate(PreparedStatement ps, Pass entity) throws PassDAOException {
         try {
             ps.setInt(1, entity.getQuantityAvailable());
             ps.setBoolean(2,entity.getHot());
             ps.setInt(3, entity.getDiscountForRegular());
             ps.setLong(4, entity.getId());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new PassDAOException("SQL exception (prepareStatementForUpdate): " + e,e);
         }
     }
 
@@ -78,14 +78,14 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForCreate(PreparedStatement ps, Pass entity) throws DAOException {
+    protected void prepareStatementForCreate(PreparedStatement ps, Pass entity) throws PassDAOException {
         try {
             ps.setLong(1, entity.getTourId());
             ps.setDate(2, Date.valueOf(entity.getLeavingDate()));
             ps.setInt(3, entity.getQuantityAvailable());
             ps.setDouble(4, entity.getPrice());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new PassDAOException("SQL exception (prepareStatementForCreate): " + e,e);
         }
     }
 
@@ -93,7 +93,7 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    public List<Pass> parseResultSet (ResultSet resultSet)  throws DAOException {
+    public List<Pass> parseResultSet (ResultSet resultSet)  throws PassDAOException {
         List<Pass> passList = new ArrayList<>();
 
         try {
@@ -109,7 +109,7 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
                 passList.add(pass);
             }
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new PassDAOException("SQL exception (parseResultSet): " + e,e);
         }
         return passList;
     }
@@ -118,25 +118,32 @@ public abstract class PassDAO extends AbstractJDBCDao<Pass> {
      * Find all passes for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws PassDAOException
      */
-    public abstract List<Pass> findAllForTour(Tour tour) throws DAOException ;
+    public abstract List<Pass> findAllForTour(Tour tour) throws PassDAOException ;
 
-    public abstract List<Pass> findAllForTourWithSeats(Tour tour) throws DAOException ;
-
-    /**
-     * Find all passes for tour.
-     * @param  tour the tour
-     * @return the list
-     * @throws DAOException the DAO exception
-     */
-    public abstract List<Pass> findAllWithDiscount(Tour tour) throws DAOException ;
 
     /**
-     * Find all passes for tour.
+     * Find all passes for tour with seats.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws PassDAOException
      */
-    public abstract List<Pass> findAllHot(Tour tour) throws DAOException ;
+    public abstract List<Pass> findAllForTourWithSeats(Tour tour) throws PassDAOException ;
+
+    /**
+     * Find all passes for tour with discount.
+     * @param  tour the tour
+     * @return the list
+     * @throws PassDAOException
+     */
+    public abstract List<Pass> findAllWithDiscount(Tour tour) throws PassDAOException ;
+
+    /**
+     * Find all hot passes .
+     * @param  tour the tour
+     * @return the list
+     * @throws PassDAOException
+     */
+    public abstract List<Pass> findAllHot(Tour tour) throws PassDAOException ;
 }

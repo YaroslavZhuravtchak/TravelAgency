@@ -37,10 +37,7 @@
 
             <section class="tour_info" >
                 <br><br>
-
                 <h1 id="k"><fmt:message key="search.admin.title" /></h1>
-
-
 
                 <form  method="get" action="admin" id="form">
                     <input type="hidden" name="command" value="searchadmin" />
@@ -63,7 +60,6 @@
                     </div>
                 </form>
 
-
                 <form  method="get" action="admin">
                     <input type="hidden" name="command" value="searchadmin" />
 
@@ -85,7 +81,6 @@
                         <input type="submit" value="<fmt:message key="search.find" />">
                     </div>
 
-
                 </form>
 
                     <form  method="get" action="admin" >
@@ -102,7 +97,6 @@
             </section>
 
             <section class="tour_img">
-
             </section>
             <section class="tour_data">
             </section>

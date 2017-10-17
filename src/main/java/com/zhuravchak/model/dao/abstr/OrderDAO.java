@@ -4,6 +4,7 @@ import com.zhuravchak.domain.Tour;
 import com.zhuravchak.domain.User;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.Order;
+import com.zhuravchak.model.exception.OrderDAOException;
 import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement ps, Order entity) throws DAOException {
+    protected void prepareStatementForUpdate(PreparedStatement ps, Order entity) throws OrderDAOException {
         try {
             ps.setLong(1, entity.getPassId());
             ps.setLong(2,entity.getUserId());
@@ -76,7 +77,7 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
             ps.setDate(5, Date.valueOf(entity.getOrderDate()));
             ps.setLong(6, entity.getId());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new OrderDAOException("SQL exception (prepareStatementForUpdate): " + e,e);
         }
     }
 
@@ -84,7 +85,7 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForCreate(PreparedStatement ps, Order entity) throws DAOException {
+    protected void prepareStatementForCreate(PreparedStatement ps, Order entity) throws OrderDAOException {
         try {
             ps.setLong(1, entity.getPassId());
             ps.setLong(2,entity.getUserId());
@@ -92,7 +93,7 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
             ps.setDouble(4, entity.getTotalPrice());
             ps.setDate(5, Date.valueOf(entity.getOrderDate()));
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new OrderDAOException("SQL exception (prepareStatementForCreate): " + e,e);
         }
     }
 
@@ -100,7 +101,7 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    public List<Order> parseResultSet (ResultSet resultSet)  throws DAOException {
+    public List<Order> parseResultSet (ResultSet resultSet)  throws OrderDAOException {
         List<Order> orders = new ArrayList<>();
 
         try {
@@ -118,7 +119,7 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
                 orders.add(order);
             }
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e,e);
+            throw new OrderDAOException("SQL exception (parseResultSet): " + e,e);
         }
         return orders;
     }
@@ -127,24 +128,24 @@ public abstract class OrderDAO extends AbstractJDBCDao<Order> {
      * Find all orders for user.
      * @param  user the user
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws OrderDAOException
      */
-    public abstract List<Order> findAllForUser(User user) throws DAOException;
+    public abstract List<Order> findAllForUser(User user) throws OrderDAOException;
 
     /**
      * Find all orders for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws OrderDAOException
      */
-    public abstract List<Order> findAllForTour(Tour tour) throws DAOException;
+    public abstract List<Order> findAllForTour(Tour tour) throws OrderDAOException;
 
 
     /**
-     * Find last order for user.
+     * Find last order id for user.
      * @param  user the user
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws OrderDAOException
      */
-    public abstract long findLastIdForUser(User user) throws DAOException ;
+    public abstract long findLastIdForUser(User user) throws OrderDAOException ;
 }

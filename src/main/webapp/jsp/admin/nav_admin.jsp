@@ -19,7 +19,6 @@
             <li ><a href="admin?command=touradmin&type=vacation" style="color: aquamarine"><fmt:message key="menu.item2" /></a></li>
             <li ><a href="admin?command=prepareadminsearch" style="color: aquamarine"><fmt:message key="nav.search" /></a></li>
         </ul>
-        <!--LOGIN FORM-->
 
         <div id=logreg>
             <form action="main"  class="login">
@@ -29,7 +28,7 @@
             </form>
 
         </div>
-        <!--LOGIN FORM-->
+
     </div>
 </nav>
 <!--NAV-->

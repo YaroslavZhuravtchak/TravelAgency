@@ -4,7 +4,6 @@ import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.util.resource.ConfigurationManager;
 import org.apache.log4j.Logger;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.MalformedURLException;
@@ -18,6 +17,9 @@ public class PrepereAddPassCommand implements ActionCommand {
 
     private final static Logger LOG = Logger.getLogger(PrepereAddPassCommand.class);
 
+    /* (non-Javadoc)
+       * @see com.zhuravchak.controller.command.ActionCommand#execute(HttpServletRequest, HttpServletResponse)
+       */
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
 

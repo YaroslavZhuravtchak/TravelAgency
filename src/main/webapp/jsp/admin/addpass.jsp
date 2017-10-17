@@ -63,7 +63,6 @@
                 <img src="../../images/line.png" width="330px">
 
             </section>
-
             <section class="tour_img">
 
             </section>

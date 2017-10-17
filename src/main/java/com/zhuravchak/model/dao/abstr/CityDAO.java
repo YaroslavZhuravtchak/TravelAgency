@@ -2,6 +2,7 @@ package com.zhuravchak.model.dao.abstr;
 
 import com.zhuravchak.domain.Country;
 import com.zhuravchak.domain.Tour;
+import com.zhuravchak.model.exception.CityDAOException;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.domain.City;
 import org.apache.log4j.Logger;
@@ -64,14 +65,14 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForUpdate(PreparedStatement ps, City entity) throws DAOException {
+    protected void prepareStatementForUpdate(PreparedStatement ps, City entity) throws CityDAOException {
         try {
             ps.setLong(1, entity.getCountryId());
             ps.setString(2, entity.getName());
             ps.setString(3, entity.getNameUA());
             ps.setLong(4, entity.getId());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e, e);
+            throw new CityDAOException(" SQL exception (prepareStatementForUpdate): " + e, e);
         }
     }
 
@@ -79,13 +80,13 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    protected void prepareStatementForCreate(PreparedStatement ps, City entity) throws DAOException {
+    protected void prepareStatementForCreate(PreparedStatement ps, City entity) throws CityDAOException {
         try {
             ps.setLong(1, entity.getCountryId());
             ps.setString(2, entity.getName());
             ps.setString(3, entity.getNameUA());
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e, e);
+            throw new CityDAOException(" SQL exception (prepareStatementForCreate): " + e, e);
         }
     }
 
@@ -93,7 +94,7 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
         * @see com.zhuravchak.model.dao.abstr.AbstractJDBCDao
         */
     @Override
-    public List<City> parseResultSet(ResultSet resultSet) throws DAOException {
+    public List<City> parseResultSet(ResultSet resultSet) throws CityDAOException {
         List<City> cities = new ArrayList<>();
 
         try {
@@ -109,7 +110,7 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
                 cities.add(city);
             }
         } catch (SQLException e) {
-            throw new DAOException("SQL exception (request or table failed): " + e, e);
+            throw new CityDAOException(" SQL exception (parseResultSet): " + e, e);
         }
         return cities;
     }
@@ -118,23 +119,23 @@ public abstract class CityDAO extends AbstractJDBCDao<City> {
      * Find all city for tour.
      * @param  tour the tour
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CityDAOException
      */
-    public abstract List<City> findAllForTour(Tour tour) throws DAOException;
+    public abstract List<City> findAllForTour(Tour tour) throws CityDAOException;
 
     /**
-     * Find all cities after now.
+     * Find all cities with actual passes for city.
      *
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CityDAOException
      */
-    public abstract List<City> getAllWithActualPassesForCountry(Country country) throws DAOException;
+    public abstract List<City> getAllWithActualPassesForCountry(Country country) throws CityDAOException;
 
     /**
-     * Find all cities after now.
+     * Find all cities with tours.
      *
      * @return the list
-     * @throws DAOException the DAO exception
+     * @throws CityDAOException
      */
-    public abstract List<City> getAllWithTours() throws DAOException ;
+    public abstract List<City> getAllWithTours() throws CityDAOException ;
 }

@@ -20,13 +20,25 @@
 </head>
 <body>
 
-
-
 <jsp:include page="../header.jsp"/>
 
 <%@ include file="/jsp/admin/nav_admin.jsp"%>
 <main>
     <div class="tableContainer">
+
+        <c:if test="${tours[0] == null}">
+        <div class="tableRow">
+
+            <fmt:setBundle basename="messages" />
+            <section class="tour_info" style="width: 30%; border: solid black 1px;height: 350px;padding-left: 430px; padding-right: 430px ">
+
+                <br><br><br><br>
+                <h1 style="text-align: center"><fmt:message key="tours.not" /><br>
+                    <img src="../../images/line.png" width="308px">
+            </section>
+            <fmt:setBundle basename="text" />
+            </c:if>
+
         <c:forEach var="tour" items="${tours}" begin="0">
             <div class="tableRow" style="border-bottom: solid #b5a789 3px" >
                 <section class="tour_img">
@@ -39,7 +51,6 @@
                                     <c:if test="${i.count>1}">-</c:if>
                                     <em style="color: darkblue">${city.nameUA}</em>
                                 </c:forEach>
-
                                 <br>
                                 <c:forEach var="city" items="${tour.cities}" begin="0" varStatus="i" >
                                     <c:if test="${i.count>1}">-</c:if>
@@ -76,7 +87,6 @@
                         </c:otherwise>
                     </c:choose>
                     <a><strong><fmt:message key="tour.duration"/>: </strong>${tour.duration}</a>
-
                 </section>
 
                 <section class="tour_info">
@@ -172,9 +182,7 @@
 
                         <br>
                     </c:forEach>
-
                 </section>
-
             </div>
         </c:forEach>
     </div>

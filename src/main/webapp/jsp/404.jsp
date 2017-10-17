@@ -16,7 +16,7 @@
 
 <html>
 <head>
-    <title>Error</title>
+    <title>404</title>
     <link rel="stylesheet" type="text/css" href="../../css/travel.css">
 </head>
 <body>
