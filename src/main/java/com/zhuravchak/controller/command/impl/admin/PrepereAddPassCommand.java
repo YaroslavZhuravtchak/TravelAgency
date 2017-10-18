@@ -32,7 +32,7 @@ public class PrepereAddPassCommand implements ActionCommand {
             if(from==null||from.contains("command=prepareaddpass") ) {
                 request.getSession().setAttribute("toursPage", url.toString());
            }
-            System.out.println(url.toString());
+
         } catch (MalformedURLException e) {
             LOG.error(e);
             throw new CommandException(e);

@@ -7,8 +7,8 @@
 --%>
 <%@ taglib prefix = "travel" uri = "/WEB-INF/tld/custom.tld" %>
 <header class="top"  style="background-image: url(../images/hb.jpg)";>
-    <travel:showUser />
-    <img id="headerLogo" src="../images/yy.png"  height="200px" alt="Header logo image">
+        <travel:showUser />
+        <img id="headerLogo" src="../images/yy.png"  height="200px" alt="Header logo image">
 
         <div id="flagUa" style="position: absolute; top: 17px; right: 15px;">
             <a href="main?command=updatelocal&local=uk_UA"><img src="../images/ua.png" width="32px"></a></div>

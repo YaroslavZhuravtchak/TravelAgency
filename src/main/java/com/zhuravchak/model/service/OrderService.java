@@ -63,7 +63,6 @@ public class OrderService {
         } else if (isRegular){
             price = price - price*(pass.getDiscountForRegular()/100.0);
         }
-        System.out.println(price);
        return price;
     }
 

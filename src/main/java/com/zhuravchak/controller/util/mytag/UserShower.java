@@ -20,7 +20,6 @@ public class UserShower extends TagSupport {
     public int doStartTag() throws JspException{
         JspWriter out =  pageContext.getOut();
         HttpSession session = pageContext.getSession();
-        String message = null;
         String user = (String) session.getAttribute("user");
         String role = (String) session.getAttribute("role");
         String isRegular = (String) session.getAttribute("isRegular");

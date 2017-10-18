@@ -4,7 +4,6 @@ import com.zhuravchak.controller.exception.CommandException;
 import com.zhuravchak.controller.command.ActionCommand;
 import com.zhuravchak.model.exception.DAOException;
 import com.zhuravchak.model.dao.factory.DAOFactory;
-import com.zhuravchak.model.dao.factory.MySqlDaoFactory;
 import com.zhuravchak.domain.User;
 import com.zhuravchak.domain.enums.UserRole;
 import com.zhuravchak.model.connection.ConnectionPool;
@@ -77,7 +76,7 @@ public class RegisterCommand implements ActionCommand {
                 page = ConfigurationManager.getProperty("path.page.register");
             }
         } catch (ServiceException|DAOException e) {
-            LOG.error(e + " can not create user: ");
+            LOG.error(e + " Can not create user: ");
             throw new CommandException(e);
         } finally {
             if(cn != null){

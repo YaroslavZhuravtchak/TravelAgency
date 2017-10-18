@@ -34,13 +34,13 @@ public class AdminSecurityFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest)servletRequest;
         HttpServletResponse res = (HttpServletResponse)servletResponse;
 
-        String contextPath = req.getContextPath();
         HttpSession session = req.getSession();
         String role = (String) session.getAttribute("role");
+
         if ((role != null) && (role.equals("ADMIN"))) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            res.sendRedirect(contextPath +"/login");
+            res.sendRedirect("/login");
         }
     }
 

@@ -32,6 +32,7 @@ public class TourCommand implements ActionCommand {
 
      String page = null;
      String role = (String)request.getSession().getAttribute("role");
+
      if(role == null){
          page = ConfigurationManager.getProperty("path.page.login");
      }else{
@@ -62,7 +63,6 @@ public class TourCommand implements ActionCommand {
                 tours = tourDAO.getAllAfterNowWithSeatsAndDiscount();
                 TourService.getInstance().fillToursWithDiscount(tours);
            }
-
        } catch (DAOException|ServiceException e) {
            throw new CommandException(e);
        } finally {
@@ -70,7 +70,11 @@ public class TourCommand implements ActionCommand {
                ConnectionPool.closeConnection(cn);
            }
        }
-        Collections.sort(tours);
+
+       if(tours != null) {
+           Collections.sort(tours);
+       }
+
         request.setAttribute("tours", tours);
 
         return page;

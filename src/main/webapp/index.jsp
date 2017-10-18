@@ -5,9 +5,9 @@
 <head>
     <title>Index</title>
 </head>
-<body>
-<c:set var="lang" value="en_US" scope = "session"/>
-
-<jsp:forward page="/jsp/login.jsp"/>
-</body></html>
+    <body>
+        <c:set var="lang" value="en_US" scope = "session"/>
+        <jsp:forward page="/jsp/login.jsp"/>
+    </body>
+</html>
 

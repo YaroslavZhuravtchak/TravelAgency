@@ -56,7 +56,6 @@ public class UserService {
             cn = ConnectionPool.getConnection();
             DAOFactory df = DAOFactory.getDAOFactory("MYSQL");
             user = df.getUserDAO(cn).findEntityByLogin(enterLogin);
-            System.out.println(user);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }  finally {

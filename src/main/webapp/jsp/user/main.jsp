@@ -28,17 +28,13 @@
   <%@ include file="/jsp/header.jsp"%>
   <%@ include file="/jsp/user/nav.jsp"%>
 
-
 	<div id="tableContainer">
-	<div id="tableRow">
-
-    <section id="main">
-      <img src="../../images/travel.png" width="1254 px" height="300px">
-    </section>
-
-
-	</div> <!-- tableRow -->
-	</div> <!-- tableContainer -->
+        <div id="tableRow">
+            <section id="main">
+              <img src="../../images/travel.png" width="1254 px" height="300px">
+            </section>
+        </div>
+	</div>
 
   <%@ include file="/jsp/footer.jsp"%>
   </body>

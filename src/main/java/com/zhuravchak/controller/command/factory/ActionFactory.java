@@ -32,7 +32,6 @@ public class ActionFactory {
         }
         try {
             CommandEnum currentEnum = CommandEnum.valueOf(action.toUpperCase());
-            System.out.println(currentEnum);
             current = currentEnum.getCurrentCommand();
         } catch (IllegalArgumentException e) {
             LOG.info(MessageManager.getProperty("message.wrongaction" )  + " :"+action);

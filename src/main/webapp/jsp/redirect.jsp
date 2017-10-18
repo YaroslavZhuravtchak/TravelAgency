@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<c:redirect url="${redir}" />
+    <c:redirect url="${redir}" />
 
 </body>
 </html>

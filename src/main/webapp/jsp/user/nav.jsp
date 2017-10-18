@@ -17,13 +17,12 @@
                 <li ><a href="user?command=tour&type=shopping" style="color: aquamarine"><fmt:message key="menu.item4" /></a></li>
                 <li ><a href="user?command=tour&type=trip" style="color: aquamarine"><fmt:message key="menu.item3" /></a></li>
                 <li ><a href="user?command=tour&type=vacation" style="color: aquamarine"><fmt:message key="menu.item2" /></a></li>
-
                 <li ><a href="user?command=tour&type=hot" style="color: aquamarine"><fmt:message key="nav.hot" /></a></li>
                 <li ><a href="user?command=tour&type=discount" style="color: aquamarine"><fmt:message key="nav.discount" /></a></li>
                 <li ><a href="user?command=preparesearch" style="color: aquamarine"><fmt:message key="nav.search" /></a></li>
         </ul>
-        <!--LOGIN FORM-->
 
+        <!--LOGOUT FORM-->
         <div id=logreg>
             <form action="main"  class="login">
                 <input type="hidden" name="command" value="logout" />
@@ -31,7 +30,7 @@
                 <input type="submit" value="<fmt:message key="label.form.logout" />"/>
             </form>
         </div>
-        <!--LOGIN FORM-->
+        <!--LOGOUT FORM-->
     </div>
 </nav>
 <!--NAV-->

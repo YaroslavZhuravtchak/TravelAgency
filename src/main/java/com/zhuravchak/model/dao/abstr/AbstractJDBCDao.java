@@ -99,7 +99,7 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new DAOException("findEntityById", e);
         }
         if (list == null || list.size() == 0) {
             return null;
@@ -121,7 +121,7 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new DAOException("findAll: ",e);
         }
         return list;
     }
@@ -140,7 +140,7 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
                 throw new DAOException ("On update modify more then 1 record: " + count);
             }
         } catch (Exception e) {
-            throw new DAOException (e);
+            throw new DAOException ("update: ",e);
         }
         return count == 1;
     }
@@ -160,7 +160,7 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
             }
             statement.close();
         } catch (Exception e) {
-            throw new DAOException(e);
+            throw new DAOException("delete: ", e);
         }
         return count == 1;
     }
@@ -173,7 +173,6 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
 
         int count = 0;
         String sql = getCreateQuery();
-        System.out.println(sql);
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             prepareStatementForCreate(statement, object);
             count = statement.executeUpdate();
@@ -182,7 +181,7 @@ public abstract class AbstractJDBCDao<T extends Entity> implements GenericDAO<T>
             }
         } catch (Exception e) {
             LOG.error(e+"(create)");
-            throw new DAOException(e);
+            throw new DAOException("create: ",e);
         }
 
         return count == 1;

@@ -37,7 +37,7 @@ public class SelectCommand implements ActionCommand {
             pass = df.getPassDAO(cn).findEntityById(id);
             tour = df.getTourDAO(cn).findEntityById(pass.getTourId());
         } catch (DAOException e) {
-            LOG.error(e);
+            LOG.error(e + "SelectCommand: ");
            throw new CommandException(e);
         }  finally {
             if(cn != null){

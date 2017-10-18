@@ -34,15 +34,14 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest)servletRequest;
         HttpServletResponse res = (HttpServletResponse)servletResponse;
 
-        String contextPath = req.getContextPath();
         HttpSession session = req.getSession();
 
         String role = (String) session.getAttribute("role");
 
         if ((role != null) && (role.equals("ADMIN"))) {
-            res.sendRedirect(contextPath +"/admin?command=forward&page=mainadmin");
+            res.sendRedirect("/admin?command=forward&page=mainadmin");
         } else if ((role != null) && (role.equals("USER"))) {
-            res.sendRedirect(contextPath +"/user?command=forward&page=main");
+            res.sendRedirect("/user?command=forward&page=main");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

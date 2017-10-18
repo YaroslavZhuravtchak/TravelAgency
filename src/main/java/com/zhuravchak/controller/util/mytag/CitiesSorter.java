@@ -1,12 +1,9 @@
 package com.zhuravchak.controller.util.mytag;
 
 import com.zhuravchak.domain.City;
-import com.zhuravchak.domain.Tour;
-
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,10 +25,8 @@ public class CitiesSorter  extends TagSupport {
     @Override
     public int doStartTag() throws JspException {
 
-        JspWriter out =  pageContext.getOut();
         HttpSession session = pageContext.getSession();
         String lang = (String) session.getAttribute("lang");
-        System.out.println(lang);
 
         if (lang != null && lang.equals("en_US")) {
             Collections.sort(list, new Comparator<City>() {
